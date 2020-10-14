@@ -1,0 +1,14 @@
+---
+title: "Project 2"
+author: "Kolton Wiebusch"
+date: "10/14/2020"
+output: 
+      github_document:
+        toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+```
+
+Initial Test
