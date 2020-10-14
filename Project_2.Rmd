@@ -8,7 +8,46 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, cache = TRUE)
 ```
 
-Initial Test
+# Required Packages
+```{r packages}
+library(tidyverse)
+library(caret)
+library(knitr)
+library(rpart)
+```
+
+# Introduction
+
+## Purpose: 
+Use bike sharing data to analyze and create models predicting the cnt response variable. 
+
+## Methods:
+Load data in and select important variables only. Filter results for each day of the week and create training and test sets from that data. Produce some summary statistics and plots about the training data to explore it. Fit a regression tree based model and a boosted tree model on the data, then apply the fits on the test sets. 
+
+```{r data}
+#Read in the data
+bike <- read_csv("day.csv")
+
+#Getting an idea for what predictors have the best
+summary(lm(cnt ~ . - casual - registered, data = bike))
+
+#Recreating the bike dataset with variables of interest
+bike %>% select(season, holiday, weekday, workingday, weathersit, atemp, hum, windspeed, cnt) -> bike
+```
+
+## Data: 
+This data contains the daily count of rental bikes between 2011 and 2012 in Capital bike share system with the corresponding weather and seasonal information.
+
+## Variables: 
+After looking to see what variables had high p-values in a linear model when predicting the response of cnt, as well as removing casual and registered due to the instructions, I narrowed it down to 9. Cnt represents the count of rental bikes daily. Season can be broken down into 1 = winter, 2 = spring, 3 = summer, 4 = fall. Holiday returns 1 if the day is a holiday. Weekday has a numeric value representing each day of the week, from 0 = Sunday to 6 = Saturday. Workingday returns 1 if the day is neither a weekend nor holiday. Weathersit has 4 levels increasing in intensity: 1 - clear or few clouds, 2 - Mist or cloudy, 3 -light snow or light rain with some thunderstorms and scattered clouds, 4 - Heavy Rain/Sleet/Snow/Thunderstorms (More severe). Atemp is a derived value of normalized feeling temperature. Hum is normalized humidity values divided to 100 (max). Windspeed is normalized wind speed values divided to 67 (max).  
+
+
+
+
+
+
+
+

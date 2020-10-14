@@ -3,4 +3,100 @@ Project 2
 Kolton Wiebusch
 10/14/2020
 
-Initial Test
+  - [Required Packages](#required-packages)
+  - [Introduction](#introduction)
+      - [Purpose:](#purpose)
+      - [Methods:](#methods)
+      - [Data:](#data)
+      - [Variables:](#variables)
+
+# Required Packages
+
+``` r
+library(tidyverse)
+library(caret)
+library(knitr)
+library(rpart)
+```
+
+# Introduction
+
+## Purpose:
+
+Use bike sharing data to analyze and create models predicting the cnt
+response variable.
+
+## Methods:
+
+Load data in and select important variables only. Filter results for
+each day of the week and create training and test sets from that data.
+Produce some summary statistics and plots about the training data to
+explore it. Fit a regression tree based model and a boosted tree model
+on the data, then apply the fits on the test sets.
+
+``` r
+#Read in the data
+bike <- read_csv("day.csv")
+
+#Getting an idea for what predictors have the best
+summary(lm(cnt ~ . - casual - registered, data = bike))
+```
+
+    ## 
+    ## Call:
+    ## lm(formula = cnt ~ . - casual - registered, data = bike)
+    ## 
+    ## Residuals:
+    ##     Min      1Q  Median      3Q     Max 
+    ## -4035.5  -446.9    46.5   548.2  2956.1 
+    ## 
+    ## Coefficients: (1 not defined because of singularities)
+    ##              Estimate Std. Error t value Pr(>|t|)    
+    ## (Intercept)  1326.457    248.267   5.343 1.23e-07 ***
+    ## instant        -8.048      3.674  -2.190 0.028811 *  
+    ## dteday             NA         NA      NA       NA    
+    ## season        508.276     54.617   9.306  < 2e-16 ***
+    ## yr           4986.655   1346.467   3.704 0.000229 ***
+    ## mnth          206.655    113.424   1.822 0.068877 .  
+    ## holiday      -522.868    200.519  -2.608 0.009308 ** 
+    ## weekday        69.187     16.256   4.256 2.36e-05 ***
+    ## workingday    122.130     71.822   1.700 0.089480 .  
+    ## weathersit   -623.752     78.374  -7.959 6.79e-15 ***
+    ## temp         2178.956   1401.652   1.555 0.120491    
+    ## atemp        3391.410   1587.380   2.136 0.032978 *  
+    ## hum          -960.439    314.303  -3.056 0.002328 ** 
+    ## windspeed   -2520.931    455.384  -5.536 4.35e-08 ***
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+    ## 
+    ## Residual standard error: 870.1 on 718 degrees of freedom
+    ## Multiple R-squared:  0.8016, Adjusted R-squared:  0.7983 
+    ## F-statistic: 241.7 on 12 and 718 DF,  p-value: < 2.2e-16
+
+``` r
+#Recreating the bike dataset with variables of interest
+bike %>% select(season, holiday, weekday, workingday, weathersit, atemp, hum, windspeed, cnt) -> bike
+```
+
+## Data:
+
+This data contains the daily count of rental bikes between 2011 and 2012
+in Capital bike share system with the corresponding weather and seasonal
+information.
+
+## Variables:
+
+After looking to see what variables had high p-values in a linear model
+when predicting the response of cnt, as well as removing casual and
+registered due to the instructions, I narrowed it down to 9. Cnt
+represents the count of rental bikes daily. Season can be broken down
+into 1 = winter, 2 = spring, 3 = summer, 4 = fall. Holiday returns 1 if
+the day is a holiday. Weekday has a numeric value representing each day
+of the week, from 0 = Sunday to 6 = Saturday. Workingday returns 1 if
+the day is neither a weekend nor holiday. Weathersit has 4 levels
+increasing in intensity: 1 - clear or few clouds, 2 - Mist or cloudy, 3
+-light snow or light rain with some thunderstorms and scattered clouds,
+4 - Heavy Rain/Sleet/Snow/Thunderstorms (More severe). Atemp is a
+derived value of normalized feeling temperature. Hum is normalized
+humidity values divided to 100 (max). Windspeed is normalized wind speed
+values divided to 67 (max).
