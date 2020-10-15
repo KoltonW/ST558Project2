@@ -9,6 +9,8 @@ Kolton Wiebusch
       - [Methods:](#methods)
       - [Data:](#data)
       - [Variables:](#variables)
+  - [Data Split](#data-split)
+  - [Summarizations](#summarizations)
 
 # Required Packages
 
@@ -100,3 +102,21 @@ increasing in intensity: 1 - clear or few clouds, 2 - Mist or cloudy, 3
 derived value of normalized feeling temperature. Hum is normalized
 humidity values divided to 100 (max). Windspeed is normalized wind speed
 values divided to 67 (max).
+
+# Data Split
+
+``` r
+#Filtering the data by weekday
+bike %>% filter(weekday == 0) -> newbike
+
+#Splitting the data 70/30
+set.seed(23)
+
+train <- sample(1:nrow(newbike), size = nrow(newbike)*0.7)
+test <- dplyr::setdiff(1:nrow(newbike), train)
+
+bikeTrain <- newbike[train, ]
+bikeTest <- newbike[test, ]
+```
+
+# Summarizations
