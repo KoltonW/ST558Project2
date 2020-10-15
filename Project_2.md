@@ -11,6 +11,8 @@ Kolton Wiebusch
       - [Variables:](#variables)
   - [Data Split](#data-split)
   - [Summarizations](#summarizations)
+  - [Plots](#plots)
+  - [Modeling](#modeling)
 
 # Required Packages
 
@@ -120,3 +122,79 @@ bikeTest <- newbike[test, ]
 ```
 
 # Summarizations
+
+These summary statistics give several looks at the response variable
+cnt, or the count of rented bikes on this specific weekday for the
+training data. The first one shows basic summary statistics for the
+count. The second breaks the average and standard deviation of daily
+count down by each season (1 = winter, 2 = spring, 3 = summer, 4 =
+fall). The third breaks the average of daily count down by weather
+situation on this weekday (1 = clear, 2 = cloudy, 3 = light
+precipitation, 4 = heavy or severe precipitation).
+
+``` r
+#Summary stats of the response variable cnt
+summary(bikeTrain$cnt)
+```
+
+    ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    ##     605    3228    4333    4225    5464    8227
+
+``` r
+#Summary stats of mean and standard deviation of count of rented bikes by season on this weekday
+bikeTrain %>% group_by(season) %>% summarise(avg = mean(cnt), sd = sd(cnt))
+```
+
+    ## # A tibble: 4 x 3
+    ##   season   avg    sd
+    ##    <dbl> <dbl> <dbl>
+    ## 1      1 2262. 1341.
+    ## 2      2 4860. 1832.
+    ## 3      3 5339. 1254.
+    ## 4      4 4320. 1447.
+
+``` r
+#Summary stats of mean of count of rented bikes by weather situation on this weekday
+bikeTrain %>% group_by(weathersit) %>% summarise(avg = mean(cnt))
+```
+
+    ## # A tibble: 3 x 2
+    ##   weathersit   avg
+    ##        <dbl> <dbl>
+    ## 1          1 4323.
+    ## 2          2 4153.
+    ## 3          3 1027
+
+# Plots
+
+These scatter plots give a visual of how the response variable cnt, or
+count of the rented bikes on this specific weekday for the training
+data, correlates with several other continuous predictors. Overall, we
+can see that temperature has the strongest correlation with the count;
+as temperature increases, the number of bikes rented increases. The
+correlations with humidity and wind speed are not quite as strong, but
+it does appear that as wind speed increases, generally, the number of
+bikes rented decreases somewhat.
+
+``` r
+wind <- ggplot(bikeTrain, aes(x = windspeed, y = cnt))
+wind + geom_point() + labs(title = "Count vs Wind Speed", x = "Wind Speed (Percentage of Max of 67 MPH)", y = "Bike Rentals") + geom_text(x = .35, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$windspeed, bikeTrain$cnt), 2)), col = "red")
+```
+
+![](Project_2_files/figure-gfm/plots-1.png)<!-- -->
+
+``` r
+temp <- ggplot(bikeTrain, aes(x = atemp, y = cnt))
+temp + geom_point() + labs(title = "Count vs Temperature", x = "Normalized Temperature Proportion in Celsius", y = "Bike Rentals") + geom_text(x = .2, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$atemp, bikeTrain$cnt), 2)), col = "red")
+```
+
+![](Project_2_files/figure-gfm/plots-2.png)<!-- -->
+
+``` r
+humidity <- ggplot(bikeTrain, aes(x = hum, y = cnt))
+humidity + geom_point() + labs(title = "Count vs Humidity", x = "Normalized Humidity Values (Percentage of Max of 100)", y = "Bike Rentals") + geom_text(x = .35, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$hum, bikeTrain$cnt), 2)), col = "red")
+```
+
+![](Project_2_files/figure-gfm/plots-3.png)<!-- -->
+
+# Modeling

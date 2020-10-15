@@ -63,6 +63,35 @@ bikeTest <- newbike[test, ]
 
 # Summarizations
 
+These summary statistics give several looks at the response variable cnt, or the count of rented bikes on this specific weekday for the training data. The first one shows basic summary statistics for the count. The second breaks the average and standard deviation of daily count down by each season (1 = winter, 2 = spring, 3 = summer, 4 = fall). The third breaks the average of daily count down by weather situation on this weekday (1 = clear, 2 = cloudy, 3 = light precipitation, 4 = heavy or severe precipitation).
+
+```{r summarizations}
+#Summary stats of the response variable cnt
+summary(bikeTrain$cnt)
+
+#Summary stats of mean and standard deviation of count of rented bikes by season on this weekday
+bikeTrain %>% group_by(season) %>% summarise(avg = mean(cnt), sd = sd(cnt))
+
+#Summary stats of mean of count of rented bikes by weather situation on this weekday
+bikeTrain %>% group_by(weathersit) %>% summarise(avg = mean(cnt))
+```
+
+# Plots
+
+These scatter plots give a visual of how the response variable cnt, or count of the rented bikes on this specific weekday for the training data, correlates with several other continuous predictors. Overall, we can see that temperature has the strongest correlation with the count; as temperature increases, the number of bikes rented increases. The correlations with humidity and wind speed are not quite as strong, but it does appear that as wind speed increases, generally, the number of bikes rented decreases somewhat. 
+
+```{r plots}
+wind <- ggplot(bikeTrain, aes(x = windspeed, y = cnt))
+wind + geom_point() + labs(title = "Count vs Wind Speed", x = "Wind Speed (Percentage of Max of 67 MPH)", y = "Bike Rentals") + geom_text(x = .35, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$windspeed, bikeTrain$cnt), 2)), col = "red")
+
+temp <- ggplot(bikeTrain, aes(x = atemp, y = cnt))
+temp + geom_point() + labs(title = "Count vs Temperature", x = "Normalized Temperature Proportion in Celsius", y = "Bike Rentals") + geom_text(x = .2, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$atemp, bikeTrain$cnt), 2)), col = "red")
+
+humidity <- ggplot(bikeTrain, aes(x = hum, y = cnt))
+humidity + geom_point() + labs(title = "Count vs Humidity", x = "Normalized Humidity Values (Percentage of Max of 100)", y = "Bike Rentals") + geom_text(x = .35, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$hum, bikeTrain$cnt), 2)), col = "red")
+```
+
+# Modeling
 
 
 
