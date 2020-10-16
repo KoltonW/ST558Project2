@@ -13,6 +13,8 @@ Kolton Wiebusch
   - [Summarizations](#summarizations)
   - [Plots](#plots)
   - [Modeling](#modeling)
+      - [Regression Tree Model](#regression-tree-model)
+      - [Boosted Tree Model](#boosted-tree-model)
 
 # Required Packages
 
@@ -21,6 +23,7 @@ library(tidyverse)
 library(caret)
 library(knitr)
 library(rpart)
+library(rattle)
 ```
 
 # Introduction
@@ -177,6 +180,7 @@ it does appear that as wind speed increases, generally, the number of
 bikes rented decreases somewhat.
 
 ``` r
+#count vs wind speed scatter plot
 wind <- ggplot(bikeTrain, aes(x = windspeed, y = cnt))
 wind + geom_point() + labs(title = "Count vs Wind Speed", x = "Wind Speed (Percentage of Max of 67 MPH)", y = "Bike Rentals") + geom_text(x = .35, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$windspeed, bikeTrain$cnt), 2)), col = "red")
 ```
@@ -184,6 +188,7 @@ wind + geom_point() + labs(title = "Count vs Wind Speed", x = "Wind Speed (Perce
 ![](Project_2_files/figure-gfm/plots-1.png)<!-- -->
 
 ``` r
+#count vs temp scatter plot
 temp <- ggplot(bikeTrain, aes(x = atemp, y = cnt))
 temp + geom_point() + labs(title = "Count vs Temperature", x = "Normalized Temperature in Celsius (Percentage of Max of 50)", y = "Bike Rentals") + geom_text(x = .2, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$atemp, bikeTrain$cnt), 2)), col = "red")
 ```
@@ -191,6 +196,7 @@ temp + geom_point() + labs(title = "Count vs Temperature", x = "Normalized Tempe
 ![](Project_2_files/figure-gfm/plots-2.png)<!-- -->
 
 ``` r
+#count vs humidity scatter plot
 humidity <- ggplot(bikeTrain, aes(x = hum, y = cnt))
 humidity + geom_point() + labs(title = "Count vs Humidity", x = "Normalized Humidity Values (Percentage of Max of 100)", y = "Bike Rentals") + geom_text(x = .35, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$hum, bikeTrain$cnt), 2)), col = "red")
 ```
@@ -199,10 +205,30 @@ humidity + geom_point() + labs(title = "Count vs Humidity", x = "Normalized Humi
 
 # Modeling
 
+## Regression Tree Model
+
+The first model to be fit on this training data is a regression tree
+model. This fit uses recursive binary splitting and tries to minimize
+residual sums of squares at each predictor. The response variable the
+model is trying to predict for is cnt, or the count of bike rentals. The
+predictors are all 8 other variables narrowed down in the introduction
+section. Leave one out cross validation is used, which is a type of
+cross-validation approach in which each observation is considered as the
+validation set and the rest (N-1 observations) are considered as the
+training set. This method helps reduce bias and randomness. The tuning
+parameter of cp for the rpart method is set to replicate at 10 values to
+see which fit has the lowest RMSE and MAE and the highest R-squared
+value. After the everything has run, the optimal model will be chosen
+and saved in the object to later be used on the test set. Details about
+the final model are shown below.
+
 ``` r
+#Using caret package to fit training data to regression tree using LOOCV
 bikeReg <- train(cnt ~ ., data = bikeTrain, method = "rpart",
-                 trControl = trainControl(method = "LOOCV"), 
+                 trControl = trainControl(method = "LOOCV"),
                  tuneLength = 10)
+
+#Display fit details
 bikeReg
 ```
 
@@ -232,8 +258,58 @@ bikeReg
     ## The final value used for the model was cp = 0.
 
 ``` r
-plot(bikeReg$finalModel)
-text(bikeReg$finalModel)
+#Best tuning parameter value for the final model
+kable(bikeReg$bestTune)
+```
+
+| cp |
+| -: |
+|  0 |
+
+``` r
+#Displaying the final model
+fancyRpartPlot(bikeReg$finalModel, main = "Regression Tree Model for cnt Variable on Training Data", sub = NULL)
 ```
 
 ![](Project_2_files/figure-gfm/model%201-1.png)<!-- -->
+
+## Boosted Tree Model
+
+The second model to be fit on this training data is a boosted tree
+model. This fit is basically a slow training of trees, as predictions
+are updated as the tree grows. The response variable the model is trying
+to predict for is cnt, or the count of bike rentals. The predictors are
+all 8 other variables narrowed down in the introduction section.
+Repeated cross validation is used, with the parameters of number = 10
+and repeats = 5. Thus, 10 different folds of cross validation is
+repeated 5 times. Also tuning parameters set for the gbm model are
+interaction.depth, n.trees, shrinkage, and n.minobsinnode. These all
+have various lengths to check except for shrinkage. After this has all
+been run, a final model with the lowest RMSE and MAE and highest R
+Squared will be selected for use on the test set. Details about the
+final model are shown below.
+
+``` r
+#Using caret package to fit training data to boosted tree model using repeated cv
+bikeBoost <- train(cnt ~ ., data = bikeTrain, method = "gbm",
+                   trControl = trainControl(method = "repeatedcv", number = 10, repeats = 5),
+                   verbose = FALSE, tuneGrid = expand.grid(interaction.depth = c(1,2,3,4,5), 
+                                                           n.trees = c(25, 50, 75, 100, 125, 150),
+                                                           shrinkage = 0.1, n.minobsinnode = c(5, 10, 15)))
+
+#Best tuning parameter values for the final model
+kable(bikeBoost$bestTune)
+```
+
+|   | n.trees | interaction.depth | shrinkage | n.minobsinnode |
+| :- | ------: | ----------------: | --------: | -------------: |
+| 2 |      50 |                 1 |       0.1 |              5 |
+
+``` r
+#Details about final model
+bikeBoost$finalModel
+```
+
+    ## A gradient boosted model with gaussian loss function.
+    ## 50 iterations were performed.
+    ## There were 8 predictors of which 4 had non-zero influence.
