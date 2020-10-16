@@ -17,11 +17,11 @@ The analysis for [Sunday is available here](SundayAnalysis.md)
 The following packages were called with the `library()` function within the R Markdown file: `tidyverse, caret, knitr, rpart, rattle, forcats, rmarkdown`.
 
 **Code Used to Automate Replication Process:**  
-```{r Parameters, eval=FALSE, include=FALSE}
-dayNames <- unique(bike$weekday)
-output_file <- paste0(dayNames, "Analysis.md")
-params = lapply(dayNames, FUN = function(x){list(day = x)})
-reports <- tibble(output_file, params)
+```{r Parameters, eval=FALSE, include=FALSE}  
+dayNames <- unique(bike$weekday)  
+output_file <- paste0(dayNames, "Analysis.md")  
+params = lapply(dayNames, FUN = function(x){list(day = x)})  
+reports <- tibble(output_file, params)  
 ```  
 
 ```{r render, eval=FALSE, include=FALSE}
