@@ -22,7 +22,7 @@ dayNames <- unique(bike$weekday)
 output_file <- paste0(dayNames, "Analysis.md")
 params = lapply(dayNames, FUN = function(x){list(day = x)})
 reports <- tibble(output_file, params)
-```
+```  
 
 ```{r render, eval=FALSE, include=FALSE}
 apply(reports, MARGIN = 1, 
