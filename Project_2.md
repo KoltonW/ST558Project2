@@ -101,9 +101,9 @@ the day is neither a weekend nor holiday. Weathersit has 4 levels
 increasing in intensity: 1 - clear or few clouds, 2 - Mist or cloudy, 3
 -light snow or light rain with some thunderstorms and scattered clouds,
 4 - Heavy Rain/Sleet/Snow/Thunderstorms (More severe). Atemp is a
-derived value of normalized feeling temperature. Hum is normalized
-humidity values divided to 100 (max). Windspeed is normalized wind speed
-values divided to 67 (max).
+derived value of normalized feeling temperature out of max 50. Hum is
+normalized humidity values divided to 100 (max). Windspeed is normalized
+wind speed values divided to 67 (max).
 
 # Data Split
 
@@ -185,7 +185,7 @@ wind + geom_point() + labs(title = "Count vs Wind Speed", x = "Wind Speed (Perce
 
 ``` r
 temp <- ggplot(bikeTrain, aes(x = atemp, y = cnt))
-temp + geom_point() + labs(title = "Count vs Temperature", x = "Normalized Temperature Proportion in Celsius", y = "Bike Rentals") + geom_text(x = .2, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$atemp, bikeTrain$cnt), 2)), col = "red")
+temp + geom_point() + labs(title = "Count vs Temperature", x = "Normalized Temperature in Celsius (Percentage of Max of 50)", y = "Bike Rentals") + geom_text(x = .2, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$atemp, bikeTrain$cnt), 2)), col = "red")
 ```
 
 ![](Project_2_files/figure-gfm/plots-2.png)<!-- -->
@@ -198,3 +198,42 @@ humidity + geom_point() + labs(title = "Count vs Humidity", x = "Normalized Humi
 ![](Project_2_files/figure-gfm/plots-3.png)<!-- -->
 
 # Modeling
+
+``` r
+bikeReg <- train(cnt ~ ., data = bikeTrain, method = "rpart",
+                 trControl = trainControl(method = "LOOCV"), 
+                 tuneLength = 10)
+bikeReg
+```
+
+    ## CART 
+    ## 
+    ## 73 samples
+    ##  8 predictor
+    ## 
+    ## No pre-processing
+    ## Resampling: Leave-One-Out Cross-Validation 
+    ## Summary of sample sizes: 72, 72, 72, 72, 72, 72, ... 
+    ## Resampling results across tuning parameters:
+    ## 
+    ##   cp          RMSE      Rsquared     MAE      
+    ##   0.00000000  1161.198  0.604378615   918.3104
+    ##   0.06216995  1327.108  0.479301477  1098.4427
+    ##   0.12433990  1312.382  0.490098311  1090.4863
+    ##   0.18650985  1312.382  0.490098311  1090.4863
+    ##   0.24867980  1312.382  0.490098311  1090.4863
+    ##   0.31084975  1312.382  0.490098311  1090.4863
+    ##   0.37301970  1312.382  0.490098311  1090.4863
+    ##   0.43518965  1312.382  0.490098311  1090.4863
+    ##   0.49735960  1312.382  0.490098311  1090.4863
+    ##   0.55952955  1975.454  0.008787218  1766.8788
+    ## 
+    ## RMSE was used to select the optimal model using the smallest value.
+    ## The final value used for the model was cp = 0.
+
+``` r
+plot(bikeReg$finalModel)
+text(bikeReg$finalModel)
+```
+
+![](Project_2_files/figure-gfm/model%201-1.png)<!-- -->
