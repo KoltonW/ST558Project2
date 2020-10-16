@@ -71,10 +71,12 @@ These summary statistics give several looks at the response variable cnt, or the
 summary(bikeTrain$cnt)
 
 #Summary stats of mean and standard deviation of count of rented bikes by season on this weekday
-bikeTrain %>% group_by(season) %>% summarise(avg = mean(cnt), sd = sd(cnt))
+bikeTrain %>% group_by(season) %>% summarise(avg = mean(cnt), sd = sd(cnt)) -> sm1
+kable(sm1)
 
 #Summary stats of mean of count of rented bikes by weather situation on this weekday
-bikeTrain %>% group_by(weathersit) %>% summarise(avg = mean(cnt))
+bikeTrain %>% group_by(weathersit) %>% summarise(avg = mean(cnt)) -> sm2
+kable(sm2)
 ```
 
 # Plots
@@ -136,5 +138,23 @@ kable(bikeBoost$bestTune)
 #Details about final model
 bikeBoost$finalModel
 ```
+
+
+# Test Set Predictions
+
+```{r predictions}
+#Setting up test set predictions
+testBikeRT <- predict(bikeReg, newdata = bikeTest)
+testBikeBoost <- predict(bikeBoost, newdata = bikeTest)
+
+#Comparing fit results from the two models on the test sets
+postResample(testBikeRT, bikeTest$cnt)
+postResample(testBikeBoost, bikeTest$cnt)
+```
+
+The RMSE, MAE and R-squared values are shown above for each model being fit on the bike test set. The first set of results are from the Regression Tree model, and the second set of results are form the Boosted Tree model. The model that has results showing the lower RMSE and MAE and higher R-squared values are a better fit on this data when predicting for the cnt response variable. 
+
+
+
 
 

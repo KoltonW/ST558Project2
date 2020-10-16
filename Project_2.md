@@ -15,6 +15,7 @@ Kolton Wiebusch
   - [Modeling](#modeling)
       - [Regression Tree Model](#regression-tree-model)
       - [Boosted Tree Model](#boosted-tree-model)
+  - [Test Set Predictions](#test-set-predictions)
 
 # Required Packages
 
@@ -145,28 +146,28 @@ summary(bikeTrain$cnt)
 
 ``` r
 #Summary stats of mean and standard deviation of count of rented bikes by season on this weekday
-bikeTrain %>% group_by(season) %>% summarise(avg = mean(cnt), sd = sd(cnt))
+bikeTrain %>% group_by(season) %>% summarise(avg = mean(cnt), sd = sd(cnt)) -> sm1
+kable(sm1)
 ```
 
-    ## # A tibble: 4 x 3
-    ##   season   avg    sd
-    ##    <dbl> <dbl> <dbl>
-    ## 1      1 2262. 1341.
-    ## 2      2 4860. 1832.
-    ## 3      3 5339. 1254.
-    ## 4      4 4320. 1447.
+| season |      avg |       sd |
+| -----: | -------: | -------: |
+|      1 | 2262.412 | 1341.160 |
+|      2 | 4860.438 | 1832.033 |
+|      3 | 5339.158 | 1254.285 |
+|      4 | 4320.048 | 1447.091 |
 
 ``` r
 #Summary stats of mean of count of rented bikes by weather situation on this weekday
-bikeTrain %>% group_by(weathersit) %>% summarise(avg = mean(cnt))
+bikeTrain %>% group_by(weathersit) %>% summarise(avg = mean(cnt)) -> sm2
+kable(sm2)
 ```
 
-    ## # A tibble: 3 x 2
-    ##   weathersit   avg
-    ##        <dbl> <dbl>
-    ## 1          1 4323.
-    ## 2          2 4153.
-    ## 3          3 1027
+| weathersit |      avg |
+| ---------: | -------: |
+|          1 | 4323.490 |
+|          2 | 4152.826 |
+|          3 | 1027.000 |
 
 # Plots
 
@@ -313,3 +314,31 @@ bikeBoost$finalModel
     ## A gradient boosted model with gaussian loss function.
     ## 50 iterations were performed.
     ## There were 8 predictors of which 4 had non-zero influence.
+
+# Test Set Predictions
+
+``` r
+#Setting up test set predictions
+testBikeRT <- predict(bikeReg, newdata = bikeTest)
+testBikeBoost <- predict(bikeBoost, newdata = bikeTest)
+
+#Comparing fit results from the two models on the test sets
+postResample(testBikeRT, bikeTest$cnt)
+```
+
+    ##         RMSE     Rsquared          MAE 
+    ## 1154.1199874    0.6464854  931.2128739
+
+``` r
+postResample(testBikeBoost, bikeTest$cnt)
+```
+
+    ##         RMSE     Rsquared          MAE 
+    ## 1087.6994822    0.6915684  969.6383183
+
+The RMSE, MAE and R-squared values are shown above for each model being
+fit on the bike test set. The first set of results are from the
+Regression Tree model, and the second set of results are form the
+Boosted Tree model. The model that has results showing the lower RMSE
+and MAE and higher R-squared values are a better fit on this data when
+predicting for the cnt response variable.
