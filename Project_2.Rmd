@@ -5,7 +5,23 @@ date: "10/14/2020"
 output: 
       github_document:
         toc: true
+params:
+  day: Monday
 ---
+
+```{r Parameters, eval=FALSE, include=FALSE}
+dayNames <- unique(bike$weekday)
+output_file <- paste0(dayNames, "Analysis.md")
+params = lapply(dayNames, FUN = function(x){list(day = x)})
+reports <- tibble(output_file, params)
+```
+
+```{r render, eval=FALSE, include=FALSE}
+apply(reports, MARGIN = 1, 
+            FUN = function(x){
+                render(input = "Project_2.Rmd", output_file = x[[1]], params = x[[2]])
+                })
+```
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE)
@@ -19,6 +35,7 @@ library(knitr)
 library(rpart)
 library(rattle)
 library(forcats)
+library(rmarkdown)
 ```
 
 # Introduction
@@ -63,7 +80,7 @@ After looking to see what variables had high p-values in a linear model when pre
 # Data Split
 ```{r dataSplit}
 #Filtering the data by weekday
-bike %>% filter(weekday == "Monday") -> newbike
+bike %>% filter(weekday == params$day) -> newbike
 
 #Splitting the data 70/30
 set.seed(23)
@@ -100,15 +117,15 @@ These scatter plots give a visual of how the response variable cnt, or count of 
 ```{r plots}
 #count vs wind speed scatter plot
 wind <- ggplot(bikeTrain, aes(x = windspeed, y = cnt))
-wind + geom_point() + labs(title = "Count vs Wind Speed", x = "Wind Speed (Percentage of Max of 67 MPH)", y = "Bike Rentals") + geom_text(x = .35, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$windspeed, bikeTrain$cnt), 2)), col = "red")
+wind + geom_point() + labs(title = "Count vs Wind Speed", x = "Wind Speed (Percentage of Max of 67 MPH)", y = "Bike Rentals") + geom_text(x = .3, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$windspeed, bikeTrain$cnt), 2)), col = "red")
 
 #count vs temp scatter plot
 temp <- ggplot(bikeTrain, aes(x = atemp, y = cnt))
-temp + geom_point() + labs(title = "Count vs Temperature", x = "Normalized Temperature in Celsius (Percentage of Max of 50)", y = "Bike Rentals") + geom_text(x = .2, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$atemp, bikeTrain$cnt), 2)), col = "red")
+temp + geom_point() + labs(title = "Count vs Temperature", x = "Normalized Temperature in Celsius (Percentage of Max of 50)", y = "Bike Rentals") + geom_text(x = .3, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$atemp, bikeTrain$cnt), 2)), col = "red")
 
 #count vs humidity scatter plot
 humidity <- ggplot(bikeTrain, aes(x = hum, y = cnt))
-humidity + geom_point() + labs(title = "Count vs Humidity", x = "Normalized Humidity Values (Percentage of Max of 100)", y = "Bike Rentals") + geom_text(x = .35, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$hum, bikeTrain$cnt), 2)), col = "red")
+humidity + geom_point() + labs(title = "Count vs Humidity", x = "Normalized Humidity Values (Percentage of Max of 100)", y = "Bike Rentals") + geom_text(x = .4, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$hum, bikeTrain$cnt), 2)), col = "red")
 ```
 
 # Modeling

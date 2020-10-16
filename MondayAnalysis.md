@@ -201,7 +201,7 @@ wind <- ggplot(bikeTrain, aes(x = windspeed, y = cnt))
 wind + geom_point() + labs(title = "Count vs Wind Speed", x = "Wind Speed (Percentage of Max of 67 MPH)", y = "Bike Rentals") + geom_text(x = .3, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$windspeed, bikeTrain$cnt), 2)), col = "red")
 ```
 
-![](Project_2_files/figure-gfm/plots-1.png)<!-- -->
+![](MondayAnalysis_files/figure-gfm/plots-1.png)<!-- -->
 
 ``` r
 #count vs temp scatter plot
@@ -209,7 +209,7 @@ temp <- ggplot(bikeTrain, aes(x = atemp, y = cnt))
 temp + geom_point() + labs(title = "Count vs Temperature", x = "Normalized Temperature in Celsius (Percentage of Max of 50)", y = "Bike Rentals") + geom_text(x = .3, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$atemp, bikeTrain$cnt), 2)), col = "red")
 ```
 
-![](Project_2_files/figure-gfm/plots-2.png)<!-- -->
+![](MondayAnalysis_files/figure-gfm/plots-2.png)<!-- -->
 
 ``` r
 #count vs humidity scatter plot
@@ -217,7 +217,7 @@ humidity <- ggplot(bikeTrain, aes(x = hum, y = cnt))
 humidity + geom_point() + labs(title = "Count vs Humidity", x = "Normalized Humidity Values (Percentage of Max of 100)", y = "Bike Rentals") + geom_text(x = .4, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$hum, bikeTrain$cnt), 2)), col = "red")
 ```
 
-![](Project_2_files/figure-gfm/plots-3.png)<!-- -->
+![](MondayAnalysis_files/figure-gfm/plots-3.png)<!-- -->
 
 # Modeling
 
@@ -287,7 +287,7 @@ kable(bikeReg$bestTune)
 fancyRpartPlot(bikeReg$finalModel, main = "Regression Tree Model for cnt Variable on Training Data", sub = NULL)
 ```
 
-![](Project_2_files/figure-gfm/model%201-1.png)<!-- -->
+![](MondayAnalysis_files/figure-gfm/model%201-1.png)<!-- -->
 
 ## Boosted Tree Model
 

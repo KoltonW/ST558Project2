@@ -157,7 +157,7 @@ summary(bikeTrain$cnt)
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##      22    3310    4338    4354    5936    7525
+    ##    1167    3440    4582    4710    6046    8362
 
 ``` r
 #Summary stats of mean and standard deviation of count of rented bikes by season on this weekday
@@ -167,10 +167,10 @@ kable(sm1)
 
 | season |      avg |       sd |
 | -----: | -------: | -------: |
-|      1 | 2511.000 | 1415.485 |
-|      2 | 4426.353 | 1423.470 |
-|      3 | 5738.105 | 1323.215 |
-|      4 | 4447.762 | 1546.333 |
+|      1 | 2895.125 | 1026.439 |
+|      2 | 5174.438 | 2042.858 |
+|      3 | 5787.700 | 1495.944 |
+|      4 | 4713.000 | 1593.057 |
 
 ``` r
 #Summary stats of mean of count of rented bikes by weather situation on this weekday
@@ -180,9 +180,8 @@ kable(sm2)
 
 | weathersit |      avg |
 | ---------: | -------: |
-|          1 | 4587.595 |
-|          2 | 4220.172 |
-|          3 | 1393.500 |
+|          1 | 5090.476 |
+|          2 | 4177.567 |
 
 # Plots
 
@@ -201,7 +200,7 @@ wind <- ggplot(bikeTrain, aes(x = windspeed, y = cnt))
 wind + geom_point() + labs(title = "Count vs Wind Speed", x = "Wind Speed (Percentage of Max of 67 MPH)", y = "Bike Rentals") + geom_text(x = .3, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$windspeed, bikeTrain$cnt), 2)), col = "red")
 ```
 
-![](Project_2_files/figure-gfm/plots-1.png)<!-- -->
+![](FridayAnalysis_files/figure-gfm/plots-1.png)<!-- -->
 
 ``` r
 #count vs temp scatter plot
@@ -209,7 +208,7 @@ temp <- ggplot(bikeTrain, aes(x = atemp, y = cnt))
 temp + geom_point() + labs(title = "Count vs Temperature", x = "Normalized Temperature in Celsius (Percentage of Max of 50)", y = "Bike Rentals") + geom_text(x = .3, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$atemp, bikeTrain$cnt), 2)), col = "red")
 ```
 
-![](Project_2_files/figure-gfm/plots-2.png)<!-- -->
+![](FridayAnalysis_files/figure-gfm/plots-2.png)<!-- -->
 
 ``` r
 #count vs humidity scatter plot
@@ -217,7 +216,7 @@ humidity <- ggplot(bikeTrain, aes(x = hum, y = cnt))
 humidity + geom_point() + labs(title = "Count vs Humidity", x = "Normalized Humidity Values (Percentage of Max of 100)", y = "Bike Rentals") + geom_text(x = .4, y = 7500, size = 3, label = paste0("Correlation = ", round(cor(bikeTrain$hum, bikeTrain$cnt), 2)), col = "red")
 ```
 
-![](Project_2_files/figure-gfm/plots-3.png)<!-- -->
+![](FridayAnalysis_files/figure-gfm/plots-3.png)<!-- -->
 
 # Modeling
 
@@ -250,44 +249,44 @@ bikeReg
 
     ## CART 
     ## 
-    ## 73 samples
+    ## 72 samples
     ##  8 predictor
     ## 
     ## No pre-processing
     ## Resampling: Leave-One-Out Cross-Validation 
-    ## Summary of sample sizes: 72, 72, 72, 72, 72, 72, ... 
+    ## Summary of sample sizes: 71, 71, 71, 71, 71, 71, ... 
     ## Resampling results across tuning parameters:
     ## 
     ##   cp          RMSE      Rsquared    MAE     
-    ##   0.00000000  1457.600  0.35952740  1195.829
-    ##   0.04588097  1405.365  0.39197942  1179.719
-    ##   0.09176193  1500.591  0.30188872  1259.740
-    ##   0.13764290  1521.631  0.28564741  1276.979
-    ##   0.18352386  1521.631  0.28564741  1276.979
-    ##   0.22940483  1521.631  0.28564741  1276.979
-    ##   0.27528579  1521.631  0.28564741  1276.979
-    ##   0.32116676  1521.631  0.28564741  1276.979
-    ##   0.36704772  1521.631  0.28564741  1276.979
-    ##   0.41292869  2047.060  0.02762353  1835.100
+    ##   0.00000000  1622.987  0.27820177  1288.748
+    ##   0.03341426  1633.848  0.27089230  1295.337
+    ##   0.06682853  1803.377  0.13594231  1485.157
+    ##   0.10024279  1724.570  0.15788244  1407.438
+    ##   0.13365705  1738.426  0.14887947  1415.884
+    ##   0.16707131  1738.426  0.14887947  1415.884
+    ##   0.20048558  1738.426  0.14887947  1415.884
+    ##   0.23389984  1738.426  0.14887947  1415.884
+    ##   0.26731410  1738.426  0.14887947  1415.884
+    ##   0.30072836  2131.926  0.06401603  1913.413
     ## 
     ## RMSE was used to select the optimal model using the smallest value.
-    ## The final value used for the model was cp = 0.04588097.
+    ## The final value used for the model was cp = 0.
 
 ``` r
 #Best tuning parameter value for the final model
 kable(bikeReg$bestTune)
 ```
 
-|   |       cp |
-| :- | -------: |
-| 2 | 0.045881 |
+| cp |
+| -: |
+|  0 |
 
 ``` r
 #Displaying the final model
 fancyRpartPlot(bikeReg$finalModel, main = "Regression Tree Model for cnt Variable on Training Data", sub = NULL)
 ```
 
-![](Project_2_files/figure-gfm/model%201-1.png)<!-- -->
+![](FridayAnalysis_files/figure-gfm/model%201-1.png)<!-- -->
 
 ## Boosted Tree Model
 
@@ -317,9 +316,9 @@ bikeBoost <- train(cnt ~ ., data = bikeTrain, method = "gbm",
 kable(bikeBoost$bestTune)
 ```
 
-|    | n.trees | interaction.depth | shrinkage | n.minobsinnode |
+|   | n.trees | interaction.depth | shrinkage | n.minobsinnode |
 | :- | ------: | ----------------: | --------: | -------------: |
-| 19 |      25 |                 2 |       0.1 |              5 |
+| 3 |      75 |                 1 |       0.1 |              5 |
 
 ``` r
 #Details about final model
@@ -327,8 +326,8 @@ bikeBoost$finalModel
 ```
 
     ## A gradient boosted model with gaussian loss function.
-    ## 25 iterations were performed.
-    ## There were 13 predictors of which 4 had non-zero influence.
+    ## 75 iterations were performed.
+    ## There were 13 predictors of which 5 had non-zero influence.
 
 # Test Set Predictions
 
@@ -342,14 +341,14 @@ postResample(testBikeRT, bikeTest$cnt)
 ```
 
     ##         RMSE     Rsquared          MAE 
-    ## 1138.9581399    0.5944807  977.8839844
+    ## 1545.1866535    0.3542973 1310.3750000
 
 ``` r
 postResample(testBikeBoost, bikeTest$cnt)
 ```
 
     ##         RMSE     Rsquared          MAE 
-    ## 1186.6402312    0.5632436 1075.3303997
+    ## 1406.0373402    0.4694051 1235.7752309
 
 The RMSE, MAE and R-squared values are shown above for each model being
 fit on the bike test set. The first set of results are from the
