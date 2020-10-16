@@ -18,6 +18,7 @@ library(caret)
 library(knitr)
 library(rpart)
 library(rattle)
+library(forcats)
 ```
 
 # Introduction
@@ -37,6 +38,19 @@ summary(lm(cnt ~ . - casual - registered, data = bike))
 
 #Recreating the bike dataset with variables of interest
 bike %>% select(season, holiday, weekday, workingday, weathersit, atemp, hum, windspeed, cnt) -> bike
+
+#Resetting weekday to be factors
+bike$weekday <- as.factor(bike$weekday)
+
+#Resetting weekday column to show days of the week
+bike <- bike %>% mutate(weekday = fct_recode(weekday, 
+                                             "Monday" = "1",
+                                             "Tuesday" = "2",
+                                             "Wednesday" = "3",
+                                             "Thursday" = "4",
+                                             "Friday" = "5",
+                                             "Saturday" = "6",
+                                             "Sunday" = "0"))
 ```
 
 ## Data: 
@@ -49,7 +63,7 @@ After looking to see what variables had high p-values in a linear model when pre
 # Data Split
 ```{r dataSplit}
 #Filtering the data by weekday
-bike %>% filter(weekday == 0) -> newbike
+bike %>% filter(weekday == "Monday") -> newbike
 
 #Splitting the data 70/30
 set.seed(23)
