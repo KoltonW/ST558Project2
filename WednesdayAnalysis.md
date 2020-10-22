@@ -1,7 +1,7 @@
 Project 2
 ================
-Kolton Wiebusch
-10/14/2020
+Kolton Wiebusch & Yuying Zhou
+10/21/2020
 
   - [Required Packages](#required-packages)
   - [Introduction](#introduction)
@@ -15,6 +15,7 @@ Kolton Wiebusch
   - [Modeling](#modeling)
       - [Regression Tree Model](#regression-tree-model)
       - [Boosted Tree Model](#boosted-tree-model)
+      - [Linear Regression Model](#linear-regression-model)
   - [Test Set Predictions](#test-set-predictions)
 
 # Required Packages
@@ -46,7 +47,7 @@ on the data, then apply the fits on the test sets.
 
 ``` r
 #Read in the data
-bike <- read_csv("day.csv")
+bike <- read_csv("../day.csv")
 
 #Getting an idea for what predictors have the best
 summary(lm(cnt ~ . - casual - registered, data = bike))
@@ -330,12 +331,19 @@ bikeBoost$finalModel
     ## 100 iterations were performed.
     ## There were 13 predictors of which 5 had non-zero influence.
 
+## Linear Regression Model
+
+``` r
+m3<-lm(cnt~ season+weathersit+hum+windspeed, data=bikeTrain)
+```
+
 # Test Set Predictions
 
 ``` r
 #Setting up test set predictions
 testBikeRT <- predict(bikeReg, newdata = bikeTest)
 testBikeBoost <- predict(bikeBoost, newdata = bikeTest)
+lm_pred<-predict(m3, newdata = bikeTest)
 
 #Comparing fit results from the two models on the test sets
 postResample(testBikeRT, bikeTest$cnt)
@@ -350,6 +358,13 @@ postResample(testBikeBoost, bikeTest$cnt)
 
     ##         RMSE     Rsquared          MAE 
     ## 1438.3912790    0.5304384 1193.6765870
+
+``` r
+postResample(lm_pred,bikeTest$cnt)
+```
+
+    ##         RMSE     Rsquared          MAE 
+    ## 1680.5187695    0.3584271 1308.3426273
 
 The RMSE, MAE and R-squared values are shown above for each model being
 fit on the bike test set. The first set of results are from the

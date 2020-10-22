@@ -1,7 +1,7 @@
 ---
 title: "Project 2"
-author: "Kolton Wiebusch"
-date: "10/14/2020"
+author: "Kolton Wiebusch & Yuying Zhou"
+date: "10/21/2020"
 output: 
       github_document:
         toc: true
@@ -48,7 +48,7 @@ Load data in and select important variables only. Filter results for each day of
 
 ```{r data}
 #Read in the data
-bike <- read_csv("day.csv")
+bike <- read_csv("../day.csv")
 
 #Getting an idea for what predictors have the best
 summary(lm(cnt ~ . - casual - registered, data = bike))
@@ -170,6 +170,11 @@ kable(bikeBoost$bestTune)
 bikeBoost$finalModel
 ```
 
+## Linear Regression Model
+```{r}
+m3<-lm(cnt~ season+weathersit+hum+windspeed, data=bikeTrain)
+```
+
 
 # Test Set Predictions
 
@@ -177,10 +182,12 @@ bikeBoost$finalModel
 #Setting up test set predictions
 testBikeRT <- predict(bikeReg, newdata = bikeTest)
 testBikeBoost <- predict(bikeBoost, newdata = bikeTest)
+lm_pred<-predict(m3, newdata = bikeTest)
 
 #Comparing fit results from the two models on the test sets
 postResample(testBikeRT, bikeTest$cnt)
 postResample(testBikeBoost, bikeTest$cnt)
+postResample(lm_pred,bikeTest$cnt)
 ```
 
 The RMSE, MAE and R-squared values are shown above for each model being fit on the bike test set. The first set of results are from the Regression Tree model, and the second set of results are form the Boosted Tree model. The model that has results showing the lower RMSE and MAE and higher R-squared values are a better fit on this data when predicting for the cnt response variable. 
