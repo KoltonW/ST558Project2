@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+@font-face {
+font-family: octicons-link;
+src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+body {
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+color: #333;
+font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+font-size: 16px;
+line-height: 1.6;
+word-wrap: break-word;
+}
+a {
+background-color: transparent;
+}
+a:active,
+a:hover {
+outline: 0;
+}
+strong {
+font-weight: bold;
+}
+h1 {
+font-size: 2em;
+margin: 0.67em 0;
+}
+img {
+border: 0;
+}
+hr {
+box-sizing: content-box;
+height: 0;
+}
+pre {
+overflow: auto;
+}
+code,
+kbd,
+pre {
+font-family: monospace, monospace;
+font-size: 1em;
+}
+input {
+color: inherit;
+font: inherit;
+margin: 0;
+}
+html input[disabled] {
+cursor: default;
+}
+input {
+line-height: normal;
+}
+input[type="checkbox"] {
+box-sizing: border-box;
+padding: 0;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+td,
+th {
+padding: 0;
+}
+* {
+box-sizing: border-box;
+}
+input {
+font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+a {
+color: #4078c0;
+text-decoration: none;
+}
+a:hover,
+a:active {
+text-decoration: underline;
+}
+hr {
+height: 0;
+margin: 15px 0;
+overflow: hidden;
+background: transparent;
+border: 0;
+border-bottom: 1px solid #ddd;
+}
+hr:before {
+display: table;
+content: "";
+}
+hr:after {
+display: table;
+clear: both;
+content: "";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 15px;
+margin-bottom: 15px;
+line-height: 1.1;
+}
+h1 {
+font-size: 30px;
+}
+h2 {
+font-size: 21px;
+}
+h3 {
+font-size: 16px;
+}
+h4 {
+font-size: 14px;
+}
+h5 {
+font-size: 12px;
+}
+h6 {
+font-size: 11px;
+}
+blockquote {
+margin: 0;
+}
+ul,
+ol {
+padding: 0;
+margin-top: 0;
+margin-bottom: 0;
+}
+ol ol,
+ul ol {
+list-style-type: lower-roman;
+}
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+list-style-type: lower-alpha;
+}
+dd {
+margin-left: 0;
+}
+code {
+font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+font-size: 12px;
+}
+pre {
+margin-top: 0;
+margin-bottom: 0;
+font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+.select::-ms-expand {
+opacity: 0;
+}
+.octicon {
+font: normal normal normal 16px/1 octicons-link;
+display: inline-block;
+text-decoration: none;
+text-rendering: auto;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.octicon-link:before {
+content: '\f05c';
+}
+.markdown-body:before {
+display: table;
+content: "";
+}
+.markdown-body:after {
+display: table;
+clear: both;
+content: "";
+}
+.markdown-body>*:first-child {
+margin-top: 0 !important;
+}
+.markdown-body>*:last-child {
+margin-bottom: 0 !important;
+}
+a:not([href]) {
+color: inherit;
+text-decoration: none;
+}
+.anchor {
+display: inline-block;
+padding-right: 2px;
+margin-left: -18px;
+}
+.anchor:focus {
+outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 1em;
+margin-bottom: 16px;
+font-weight: bold;
+line-height: 1.4;
+}
+h1 .octicon-link,
+h2 .octicon-link,
+h3 .octicon-link,
+h4 .octicon-link,
+h5 .octicon-link,
+h6 .octicon-link {
+color: #000;
+vertical-align: middle;
+visibility: hidden;
+}
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+text-decoration: none;
+}
+h1:hover .anchor .octicon-link,
+h2:hover .anchor .octicon-link,
+h3:hover .anchor .octicon-link,
+h4:hover .anchor .octicon-link,
+h5:hover .anchor .octicon-link,
+h6:hover .anchor .octicon-link {
+visibility: visible;
+}
+h1 {
+padding-bottom: 0.3em;
+font-size: 2.25em;
+line-height: 1.2;
+border-bottom: 1px solid #eee;
+}
+h1 .anchor {
+line-height: 1;
+}
+h2 {
+padding-bottom: 0.3em;
+font-size: 1.75em;
+line-height: 1.225;
+border-bottom: 1px solid #eee;
+}
+h2 .anchor {
+line-height: 1;
+}
+h3 {
+font-size: 1.5em;
+line-height: 1.43;
+}
+h3 .anchor {
+line-height: 1.2;
+}
+h4 {
+font-size: 1.25em;
+}
+h4 .anchor {
+line-height: 1.2;
+}
+h5 {
+font-size: 1em;
+}
+h5 .anchor {
+line-height: 1.1;
+}
+h6 {
+font-size: 1em;
+color: #777;
+}
+h6 .anchor {
+line-height: 1.1;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+pre {
+margin-top: 0;
+margin-bottom: 16px;
+}
+hr {
+height: 4px;
+padding: 0;
+margin: 16px 0;
+background-color: #e7e7e7;
+border: 0 none;
+}
+ul,
+ol {
+padding-left: 2em;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+margin-top: 0;
+margin-bottom: 0;
+}
+li>p {
+margin-top: 16px;
+}
+dl {
+padding: 0;
+}
+dl dt {
+padding: 0;
+margin-top: 16px;
+font-size: 1em;
+font-style: italic;
+font-weight: bold;
+}
+dl dd {
+padding: 0 16px;
+margin-bottom: 16px;
+}
+blockquote {
+padding: 0 15px;
+color: #777;
+border-left: 4px solid #ddd;
+}
+blockquote>:first-child {
+margin-top: 0;
+}
+blockquote>:last-child {
+margin-bottom: 0;
+}
+table {
+display: block;
+width: 100%;
+overflow: auto;
+word-break: normal;
+word-break: keep-all;
+}
+table th {
+font-weight: bold;
+}
+table th,
+table td {
+padding: 6px 13px;
+border: 1px solid #ddd;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #ccc;
+}
+table tr:nth-child(2n) {
+background-color: #f8f8f8;
+}
+img {
+max-width: 100%;
+box-sizing: content-box;
+background-color: #fff;
+}
+code {
+padding: 0;
+padding-top: 0.2em;
+padding-bottom: 0.2em;
+margin: 0;
+font-size: 85%;
+background-color: rgba(0,0,0,0.04);
+border-radius: 3px;
+}
+code:before,
+code:after {
+letter-spacing: -0.2em;
+content: "\00a0";
+}
+pre>code {
+padding: 0;
+margin: 0;
+font-size: 100%;
+word-break: normal;
+white-space: pre;
+background: transparent;
+border: 0;
+}
+.highlight {
+margin-bottom: 16px;
+}
+.highlight pre,
+pre {
+padding: 16px;
+overflow: auto;
+font-size: 85%;
+line-height: 1.45;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+.highlight pre {
+margin-bottom: 0;
+word-break: normal;
+}
+pre {
+word-wrap: normal;
+}
+pre code {
+display: inline;
+max-width: initial;
+padding: 0;
+margin: 0;
+overflow: initial;
+line-height: inherit;
+word-wrap: normal;
+background-color: transparent;
+border: 0;
+}
+pre code:before,
+pre code:after {
+content: normal;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font-size: 11px;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.pl-c {
+color: #969896;
+}
+.pl-c1,
+.pl-s .pl-v {
+color: #0086b3;
+}
+.pl-e,
+.pl-en {
+color: #795da3;
+}
+.pl-s .pl-s1,
+.pl-smi {
+color: #333;
+}
+.pl-ent {
+color: #63a35c;
+}
+.pl-k {
+color: #a71d5d;
+}
+.pl-pds,
+.pl-s,
+.pl-s .pl-pse .pl-s1,
+.pl-sr,
+.pl-sr .pl-cce,
+.pl-sr .pl-sra,
+.pl-sr .pl-sre {
+color: #183691;
+}
+.pl-v {
+color: #ed6a43;
+}
+.pl-id {
+color: #b52a1d;
+}
+.pl-ii {
+background-color: #b52a1d;
+color: #f8f8f8;
+}
+.pl-sr .pl-cce {
+color: #63a35c;
+font-weight: bold;
+}
+.pl-ml {
+color: #693a17;
+}
+.pl-mh,
+.pl-mh .pl-en,
+.pl-ms {
+color: #1d3e81;
+font-weight: bold;
+}
+.pl-mq {
+color: #008080;
+}
+.pl-mi {
+color: #333;
+font-style: italic;
+}
+.pl-mb {
+color: #333;
+font-weight: bold;
+}
+.pl-md {
+background-color: #ffecec;
+color: #bd2c00;
+}
+.pl-mi1 {
+background-color: #eaffea;
+color: #55a532;
+}
+.pl-mdr {
+color: #795da3;
+font-weight: bold;
+}
+.pl-mo {
+color: #1d3e81;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.task-list-item {
+list-style-type: none;
+}
+.task-list-item+.task-list-item {
+margin-top: 3px;
+}
+.task-list-item input {
+margin: 0 0.35em 0.25em -1.6em;
+vertical-align: middle;
+}
+:checked+.radio-label {
+z-index: 1;
+position: relative;
+border-color: #4078c0;
+}
+.sourceLine {
+display: inline-block;
+}
+code .kw { color: #000000; }
+code .dt { color: #ed6a43; }
+code .dv { color: #009999; }
+code .bn { color: #009999; }
+code .fl { color: #009999; }
+code .ch { color: #009999; }
+code .st { color: #183691; }
+code .co { color: #969896; }
+code .ot { color: #0086b3; }
+code .al { color: #a61717; }
+code .fu { color: #63a35c; }
+code .er { color: #a61717; background-color: #e3d2d2; }
+code .wa { color: #000000; }
+code .cn { color: #008080; }
+code .sc { color: #008080; }
+code .vs { color: #183691; }
+code .ss { color: #183691; }
+code .im { color: #000000; }
+code .va {color: #008080; }
+code .cf { color: #000000; }
+code .op { color: #000000; }
+code .bu { color: #000000; }
+code .ex { color: #000000; }
+code .pp { color: #999999; }
+code .at { color: #008080; }
+code .do { color: #969896; }
+code .an { color: #008080; }
+code .cv { color: #008080; }
+code .in { color: #008080; }
+</style>
+<style>
+body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+  padding-top: 0px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1 id="project-2">Project 2</h1>
+<p>Kolton Wiebusch &amp; Yuying Zhou 10/21/2020</p>
+<ul>
+<li><a href="#required-packages">Required Packages</a></li>
+<li><a href="#introduction">Introduction</a>
+<ul>
+<li><a href="#purpose">Purpose:</a></li>
+<li><a href="#methods">Methods:</a></li>
+<li><a href="#data">Data:</a></li>
+<li><a href="#variables">Variables:</a></li>
+</ul></li>
+<li><a href="#data-split">Data Split</a></li>
+<li><a href="#summarizations">Summarizations</a></li>
+<li><a href="#plots">Plots</a></li>
+<li><a href="#modeling">Modeling</a>
+<ul>
+<li><a href="#regression-tree-model">Regression Tree Model</a></li>
+<li><a href="#boosted-tree-model">Boosted Tree Model</a></li>
+<li><a href="#linear-regression-model">Linear Regression Model</a></li>
+</ul></li>
+<li><a href="#test-set-predictions">Test Set Predictions</a></li>
+</ul>
+<h1 id="required-packages">Required Packages</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(caret)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">library</span>(knitr)</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">library</span>(rpart)</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">library</span>(rattle)</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="kw">library</span>(forcats)</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="kw">library</span>(rmarkdown)</a></code></pre></div>
+<h1 id="introduction">Introduction</h1>
+<h2 id="purpose">Purpose:</h2>
+<p>Use bike sharing data to analyze and create models predicting the cnt response variable.</p>
+<h2 id="methods">Methods:</h2>
+<p>Load data in and select important variables only. Filter results for each day of the week and create training and test sets from that data. Produce some summary statistics and plots about the training data to explore it. Fit a regression tree based model and a boosted tree model on the data, then apply the fits on the test sets.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="co">#Read in the data</span></a>
+<a class="sourceLine" id="cb2-2" title="2">bike &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;../day.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">#Getting an idea for what predictors have the best</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="kw">summary</span>(<span class="kw">lm</span>(cnt <span class="op">~</span><span class="st"> </span>. <span class="op">-</span><span class="st"> </span>casual <span class="op">-</span><span class="st"> </span>registered, <span class="dt">data =</span> bike))</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = cnt ~ . - casual - registered, data = bike)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4035.5  -446.9    46.5   548.2  2956.1 
+## 
+## Coefficients: (1 not defined because of singularities)
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  1326.457    248.267   5.343 1.23e-07 ***
+## instant        -8.048      3.674  -2.190 0.028811 *  
+## dteday             NA         NA      NA       NA    
+## season        508.276     54.617   9.306  &lt; 2e-16 ***
+## yr           4986.655   1346.467   3.704 0.000229 ***
+## mnth          206.655    113.424   1.822 0.068877 .  
+## holiday      -522.868    200.519  -2.608 0.009308 ** 
+## weekday        69.187     16.256   4.256 2.36e-05 ***
+## workingday    122.130     71.822   1.700 0.089480 .  
+## weathersit   -623.752     78.374  -7.959 6.79e-15 ***
+## temp         2178.956   1401.652   1.555 0.120491    
+## atemp        3391.410   1587.380   2.136 0.032978 *  
+## hum          -960.439    314.303  -3.056 0.002328 ** 
+## windspeed   -2520.931    455.384  -5.536 4.35e-08 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 870.1 on 718 degrees of freedom
+## Multiple R-squared:  0.8016, Adjusted R-squared:  0.7983 
+## F-statistic: 241.7 on 12 and 718 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="co">#Recreating the bike dataset with variables of interest</span></a>
+<a class="sourceLine" id="cb4-2" title="2">bike <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(season, holiday, weekday, workingday, weathersit, atemp, hum, windspeed, cnt) -&gt;<span class="st"> </span>bike</a>
+<a class="sourceLine" id="cb4-3" title="3"></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">#Resetting weekday to be factors</span></a>
+<a class="sourceLine" id="cb4-5" title="5">bike<span class="op">$</span>weekday &lt;-<span class="st"> </span><span class="kw">as.factor</span>(bike<span class="op">$</span>weekday)</a>
+<a class="sourceLine" id="cb4-6" title="6"></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">#Resetting weekday column to show days of the week</span></a>
+<a class="sourceLine" id="cb4-8" title="8">bike &lt;-<span class="st"> </span>bike <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">weekday =</span> <span class="kw">fct_recode</span>(weekday, </a>
+<a class="sourceLine" id="cb4-9" title="9">                                             <span class="st">&quot;Monday&quot;</span> =<span class="st"> &quot;1&quot;</span>,</a>
+<a class="sourceLine" id="cb4-10" title="10">                                             <span class="st">&quot;Tuesday&quot;</span> =<span class="st"> &quot;2&quot;</span>,</a>
+<a class="sourceLine" id="cb4-11" title="11">                                             <span class="st">&quot;Wednesday&quot;</span> =<span class="st"> &quot;3&quot;</span>,</a>
+<a class="sourceLine" id="cb4-12" title="12">                                             <span class="st">&quot;Thursday&quot;</span> =<span class="st"> &quot;4&quot;</span>,</a>
+<a class="sourceLine" id="cb4-13" title="13">                                             <span class="st">&quot;Friday&quot;</span> =<span class="st"> &quot;5&quot;</span>,</a>
+<a class="sourceLine" id="cb4-14" title="14">                                             <span class="st">&quot;Saturday&quot;</span> =<span class="st"> &quot;6&quot;</span>,</a>
+<a class="sourceLine" id="cb4-15" title="15">                                             <span class="st">&quot;Sunday&quot;</span> =<span class="st"> &quot;0&quot;</span>))</a></code></pre></div>
+<h2 id="data">Data:</h2>
+<p>This data contains the daily count of rental bikes between 2011 and 2012 in Capital bike share system with the corresponding weather and seasonal information.</p>
+<h2 id="variables">Variables:</h2>
+<p>After looking to see what variables had high p-values in a linear model when predicting the response of cnt, as well as removing casual and registered due to the instructions, I narrowed it down to 9. Cnt represents the count of rental bikes daily. Season can be broken down into 1 = winter, 2 = spring, 3 = summer, 4 = fall. Holiday returns 1 if the day is a holiday. Weekday has a numeric value representing each day of the week, from 0 = Sunday to 6 = Saturday. Workingday returns 1 if the day is neither a weekend nor holiday. Weathersit has 4 levels increasing in intensity: 1 - clear or few clouds, 2 - Mist or cloudy, 3 -light snow or light rain with some thunderstorms and scattered clouds, 4 - Heavy Rain/Sleet/Snow/Thunderstorms (More severe). Atemp is a derived value of normalized feeling temperature out of max 50. Hum is normalized humidity values divided to 100 (max). Windspeed is normalized wind speed values divided to 67 (max).</p>
+<h1 id="data-split">Data Split</h1>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co">#Filtering the data by weekday</span></a>
+<a class="sourceLine" id="cb5-2" title="2">bike <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(weekday <span class="op">==</span><span class="st"> </span>params<span class="op">$</span>day) -&gt;<span class="st"> </span>newbike</a>
+<a class="sourceLine" id="cb5-3" title="3"></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co">#Splitting the data 70/30</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="kw">set.seed</span>(<span class="dv">23</span>)</a>
+<a class="sourceLine" id="cb5-6" title="6"></a>
+<a class="sourceLine" id="cb5-7" title="7">train &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(newbike), <span class="dt">size =</span> <span class="kw">nrow</span>(newbike)<span class="op">*</span><span class="fl">0.7</span>)</a>
+<a class="sourceLine" id="cb5-8" title="8">test &lt;-<span class="st"> </span>dplyr<span class="op">::</span><span class="kw">setdiff</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(newbike), train)</a>
+<a class="sourceLine" id="cb5-9" title="9"></a>
+<a class="sourceLine" id="cb5-10" title="10">bikeTrain &lt;-<span class="st"> </span>newbike[train, ]</a>
+<a class="sourceLine" id="cb5-11" title="11">bikeTest &lt;-<span class="st"> </span>newbike[test, ]</a></code></pre></div>
+<h1 id="summarizations">Summarizations</h1>
+<p>These summary statistics give several looks at the response variable cnt, or the count of rented bikes on this specific weekday for the training data. The first one shows basic summary statistics for the count. The second breaks the average and standard deviation of daily count down by each season (1 = winter, 2 = spring, 3 = summer, 4 = fall). The third breaks the average of daily count down by weather situation on this weekday (1 = clear, 2 = cloudy, 3 = light precipitation, 4 = heavy or severe precipitation).</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="co">#Summary stats of the response variable cnt</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw">summary</span>(bikeTrain<span class="op">$</span>cnt)</a></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     683    3770    4525    4593    5741    7767
+</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co">#Summary stats of mean and standard deviation of count of rented bikes by season on this weekday</span></a>
+<a class="sourceLine" id="cb8-2" title="2">bikeTrain <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(season) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">avg =</span> <span class="kw">mean</span>(cnt), <span class="dt">sd =</span> <span class="kw">sd</span>(cnt)) -&gt;<span class="st"> </span>sm1</a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="kw">kable</span>(sm1)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">season</th>
+<th align="right">avg</th>
+<th align="right">sd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">3036.400</td>
+<td align="right">1561.651</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">4901.125</td>
+<td align="right">1513.600</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">5646.750</td>
+<td align="right">1477.775</td>
+</tr>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">4468.048</td>
+<td align="right">1349.805</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co">#Summary stats of mean of count of rented bikes by weather situation on this weekday</span></a>
+<a class="sourceLine" id="cb9-2" title="2">bikeTrain <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(weathersit) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">avg =</span> <span class="kw">mean</span>(cnt)) -&gt;<span class="st"> </span>sm2</a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="kw">kable</span>(sm2)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">weathersit</th>
+<th align="right">avg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">5117.523</td>
+</tr>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">3916.958</td>
+</tr>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">2887.500</td>
+</tr>
+</tbody>
+</table>
+<h1 id="plots">Plots</h1>
+<p>These scatter plots give a visual of how the response variable cnt, or count of the rented bikes on this specific weekday for the training data, correlates with several other continuous predictors. Overall, we can see that temperature has the strongest correlation with the count; as temperature increases, the number of bikes rented increases. The correlations with humidity and wind speed are not quite as strong, but it does appear that as wind speed increases, generally, the number of bikes rented decreases somewhat.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="co">#count vs wind speed scatter plot</span></a>
+<a class="sourceLine" id="cb10-2" title="2">wind &lt;-<span class="st"> </span><span class="kw">ggplot</span>(bikeTrain, <span class="kw">aes</span>(<span class="dt">x =</span> windspeed, <span class="dt">y =</span> cnt))</a>
+<a class="sourceLine" id="cb10-3" title="3">wind <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Count vs Wind Speed&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Wind Speed (Percentage of Max of 67 MPH)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Bike Rentals&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="dt">x =</span> <span class="fl">.3</span>, <span class="dt">y =</span> <span class="dv">7500</span>, <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;Correlation = &quot;</span>, <span class="kw">round</span>(<span class="kw">cor</span>(bikeTrain<span class="op">$</span>windspeed, bikeTrain<span class="op">$</span>cnt), <span class="dv">2</span>)), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAMAAABNUi8GAAABelBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZrYzMzM6AAA6ADo6AGY6OgA6Ojo6OmY6OpA6ZmY6ZpA6ZrY6kLY6kNtNTU1NTW5NTY5NbqtNjshmAABmADpmAGZmOgBmOjpmOmZmOpBmZmZmkJBmkLZmkNtmtrZmtttmtv9uTU1uTW5uTY5ubo5ubqtuq+SOTU2OTW6OTY6Obk2ObquOyP+QOgCQOjqQOmaQZgCQZjqQkDqQkGaQkNuQtpCQtraQttuQ27aQ29uQ2/+rbk2rbm6rjk2ryKur5OSr5P+2ZgC2Zjq2kDq2kGa2tpC229u22/+2/7a2/9u2///Ijk3I///bkDrbkGbbkJDbtmbbtpDb25Db27bb29vb2//b/7bb/9vb///kq27k///rAwDrBAPr6wPr6wTr6+v8AAD8AwD8BAP8BOv86wP86+v/AAD/AAP/AwT/A+v/A///BOv/BP//tmb/yI7/25D/27b/29v/5Kv//7b//8j//9v//+T///8WLC6gAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAZuUlEQVR4nO2djX8jxX2H1wcW4tIWqAzGKW3ICz7IvZDaTVOahtylzSm0udZYLTRNsM3BAQ13UKoTtWzv/9552VdpJa2k0e5vdp/vB25kafbRrObRzOzqLQgJEZyg7gYQMi8ISkQHQYnoICgRHQQlooOgRHQQlIgOghLRWVfQy3/+ThA888biiqO/Opp7e3/rri4GwfaJxh5uf3RoLuXv7bCTv+MfTFWZ0cx0Q+JV1hR01A1MXlpYc3BtvqDDYF8X/cCIOt7rXM4V9PLQ3vF0ncIgqK9ZT9DxXvDS78PwP1+zds3LIkGVkubf7+/1wkTXyaSeDYPtB2H47eHiO57YkPiV9QQdBD1Tjrp6JPv2tSB49oGZn0+sE+rSv3wn2PqhHfBsXWuq9vHyZ0GwFa8O7EbDrV8alVQlfUWyvcoH3eDZ3yaeDeyKQGPGe72hus38rZvwpw/yl/IbEr+ylqCXh/Gw+F/q/6GZ7pU4WUHtRLyfEXTU1YPeMLouSIZAI+5g+0SXkZwnyfb6uaDy7GvpCNqLWzHee6Fr7zhaceQvTWxI/MpagtppOYqS6Q17kJMTtHOirutkpnh7a//a0aj70okSKUZocfU2enZXg2Ikabz9eG/rF3pGT+7wN8HWC//we9sKVenyvUDfnR6QP+xmL01tSLyKO0Ej1dTReFZQraWplq5B9eysrxp1n/n+b7OwnpFUl1pSK2i8/ajbS+/D5Hc/69oVwnjPHCkZ5c2wOpi+lN2Q+BSXgprJepgXNL6UEVQrYw6C+nryffFBDOhvnwx1pX5+mg+TcXXqWOfyw79UM33UCuX90C4Igvylgg2JN3G0Bv33Fx+UFlRf2Td/fagOZILkemVnX1dXNfudsIygthKCNjlujuLHe3oujaf4sB9PzIWCKpXeTYbe3/1tcpQ06v5or5eWeUHtTJ0M2dG0biZ2e1k/WaLnSJgM52E4uSHxLK7Og/YyB0lq7jYnlvKC2vNCOqPu69rKYfDnJ+Hle8n1l4cvPH83LfOCqmOdNyzTpm/WBpcfdPUIqkDxQdIv9MlRfY4qvjS5IfErjl5J0t2fnGYKh/GZnaygQXJiSOmih9PoHFL6WtAgmu77gd0qK2jKtFFWRnO4uvhMN1oqRDN7b+oSp5l8zbqvxX+rj6Wj1+JH0Yl6tSTtBi9+lF+Djl/TZ4xsBnY8MyfqX0pfqxxGw5wtJwTVC9Zn/23itfgtPYyq6Vs9N+zBlm6CbU16aWJD4lUa8G4m1pdNDoIS0UFQIjoISkSnAYKSJgdBieggKBEdBCWig6BEdBCUiM5agj4qzIyr1wjE9hERFKJoIoJCFE0sIej5jZ1XjsPw4vbO7tlkgaAQN0tcLOjFnfvh6e7Z1b2D8PTVMF8gKMQNExcLen7zLLx4+1j9F56/NVEgKMQNE0uPoMbTO/fzhbr5OZWZ2xLiKHPWoHa5+XTXKJkvohpVP6sgtoe4WNDzN++HT185njWCIijEegWNBkvWoBDrIJYeQa/u3bKH79kCQSFumLhY0PDpzs7L9zkPCrEWYglBF6fqRkNsDxFBIYomIihE0UQEhSiaKFzQIAgcE/OBKJ0oW1DzxV9OiROBKJ2IoBBFExEUomiibEFZg7aeKFxQiG0nIihE0UQEhSiaiKAQRRMRdOPE/IGeC+K68YmIoJsmTpwqc0BcOz4REXTTRARdi4igmyYi6FpEBN04kTXoOkQEbQjx08ePH39deMvDJ1+a8pMnX0YXZxE/ThCfPFYVP5tFXLWNywRBm0X89PFXyqpvim6KBY3LmUS1/cPHX9pLqvz4ifXUWRuXikeCplNkY3RyTzT2ffHfjz5/rEx9qEbTL9T/X6oh8Ym+SV37RA2xT74wF78KdYUnRYxPjeOfPv5jLCqCLkzmIKMxOrknfmx9UyOgGQe/eWT+V9Z+9vVD7aVS7aGe4r/QFf7XVNPuKYPTeVwzPrN/2Fs/LzPFm95BUJfETBpDjAS1jmkx9f9Gv6+0mKr8xgj6ua7wP8lYOcXICZr8OSe2exDUJTGTxhCjBeaEoE/sTZ/bcbVA0GQEVQdETzLaxoJ+/tWiO0ZQ1qBlKtmDpK8exioaQdU0/+njr42VH0eCRlN84QiaHiQZQTMD6pwgKMRStT7Rs7leNqoBMRb0UXSQ9EczTn4SHyR9HRYLak8zmcEzPs20cABlDQqx3UQEhSiaiKAQRRMRFKJoIoJCFE1EUIiiiQgKUTQRQYuz8ps4vd5rgUQELczqb4P3ea8lEhG0MAgqhYighUFQKUQELQ5rUCFEBIUomoigEEUTERSiaCKCQhRNRFCIookIClE0sW5Blzqd49MDC9ENsWZBlzsh7tMDC9EN0Ymgq8cIWs9dE6/CCApRJLFmQVmDQpxPrFvQlRoNsT1EBIUomoigEEUTERSiaGKLBd3sl15BdENsr6D2FKxLoglEt8QmCLrau9/LCLoC2afO94Hok6AzdFnx80MlBF2F7FPn+0D0SNBZuqz6AbfFa1AErZ/YYkF1EFQ6sQGCrvNTbqxBpRM9EnTt3xQsiE9dNT9NfdONT4JCnJ2lViM+7XVDBS3bWz511dwgqFeClu4un7pqbhC01YJ60PmsQVss6DLDk0+d7wOxmYI6XoMiaH3Ehgrqloig9RERtEw8WIM2lYigEEUTERSiaCKCQhRNRFCIookIClE0EUEhiiYiKETRRARdL1NnSAW20Wsigq6V6deY5LXRbyKCrhUE3TQRQdcKgm6aiKDrhTXohomtF9T1J/H82Gt/iG0XdJ0P1RcTXcIgIiiCyiYiKIKKJrZdUNagwomtFxSibCKCQhRNRFCIookIClE0EUEhiiY2TNBlj8l96qp2Epsl6NJnNX3qqnYSEdRxILolIqjjQHRLLCHo1b2dl++H4cXtnd2zyUKYoKxBG0csIej7B+HT3bOrewfh6athvhAnKMSmERcLevH2cVycv3WcLxAU4oaJiwU9v/mPeoo/v3kWXty5ny/Uzc+pzB59CXGTOYLeONB2qlleK5kvoipVP6sgtodYQtCioTMdQREUYs1r0L82LjZtDWqP92W3EWLZo3g1YF7du2UP37OFv4JGZ0xFtxHio1KCXtzeeeXYk/OgpYOgnhBLCLo4VTfaQRDUE2JbBWUN6gmxtYJC9IOIoBBFExEUomgigto4+3i85L2Od1JyGyeJCGri7gtGBO91spOC2zhFRFCT9gjq27kLBDWZL2hDfosdQatq9AaIC/xsxo/JImhFja6Y2BhBH7EGrabRFRNrFdT1t+/p+NQzCFoiNa5BnX9/qY5PPYOgsokIiqCiiQiKoFUTlzOONSiCVkvk20+WIiJo1UQEXYqIoFUTEXQpIoJWTuT7o5YhIihE0UQEhSiaiKAQRRMRFKJoIoJCFE1EUIiiiQgKUTQRQSGKJiIoRNFEBIUomoigEEUTERSiaCKCQhRNbKSg5d8v5FNXtZPYREGXeMelT13VTiKCOg5Et0QEdRyIbolNFJQ1aIOIjRS0VNb+lY/ip4HwvfaO2FpB7TpgDeKMhYTsvfaPiKDrAaYie6/9IyLoeoCpyN5r/4itFZQ1qB/E9goK0QsigkIUTXQiKCGbTk7Q8d7+eC+4dlR246qfVRDbQywUtN8JB9eOBh0EhVg3sUhQNYBeHnbCYekhtOpGQ2wPcYag470egkIUQCwS9PKwN9y6qyd6BIVYM7FI0HDUDTphf/sEQdcgtuL3kzdPLBR02VTd6CqJq37dbCt+nrYCIoLOz8pf2I2gbohTgo73gjj+HCSt7AKCSic2YgRdXYbNCcoa1A0RQReEnzyol1goqDqK92KKj+XZpKAQ6yUWCXp52Ls83B/v7QsfQVMvN7cGrZI4Yy9EtbFyYpGgWs1+LxyWPhFadaOjODgOkdRVs3ZHUhurJ84SdODBa/GbFXRFNoK6JRYJql/kVHYOpI+gcxwqa9fsNq5qP4K6JRYKqhahYT/YulvSz6oFXWxOabskCcoatIhYKOiyqbbRJdTxU1CIBcQiQaPjd6lr0GoErX4NCrGI2ExBHaxBVw1Et8RpQQfJa/FS3w+65rF7dnOfuqqdxDkjaPlU3ejSKVI5NwALaCPEucQiQZdO1Y0um8LFAIJ6RSwU1JfX4helsYKuucjxaa+LBNUf6WzuCFrdGtTRG+6m27juS2j190x5YpGgzV6DrkdcmJTo6i3LCDo9gjZF0DqJQcMFzTWh4jVo+TOgCDqLGGxQUAlr0PzeVT3FB804SKqT6MzPevd65j7UKejSmX8X7hvtA9GZn7Xu9ey9QFCPiIVd5cpPoYLWugbVL3ful387aNsFbcKZ1RkpOw9ULGh/+w/2C+68FHSZoQtBF2T9d4WtmAXnQfWpUKnvZlqQpRZ/CCqdiKAOwvujKp7iB3qK118RiqBLB6JbYqGg4VB3cmk/ZQla/Rp05XsvF590ck8sFnTJVN1owUR3pz+TeLDXNQn6H16uQeslIqhjYoGgffthj/HeRg+SVulHDx5YBHVMnBZ0cO1Ify5eLUM3+d1MK3Wk/Ad2A356sNeVCqrlDIfb7wXlX0hC0CQI6po4Jah5t/Kou8QxPIKmQVDXxFmCLuOnjDXoSmZsYg3qGumTTu6JMwR9vvT3Mq0q6DqNLspqY5dPXSWLmH+0EXQhEUErJU483GH+pvX5bRN01m0iO98H4mxBHS3D5wgaxPHrzSIL/OSrDZ0S6xO0KFf3DsLw4vbO7tlkIUjQeUFQ58SZa9A6BD3dOTCSnr46USAoxCnihtegBTn/8U8Owou3j8Pzt47zhS+Csgb1llhC0Ktf/VqNl+c3z8KLO/fzhbr1OZV5o2/rop4LtWzb8Mx5YE5v6Qn96a5RMl9ENap+VkkmrrMEK97Wh72ucwRVg+XVnBHUM0EnDEBQ6cRiQbMfOz7d0bnl9xo0zqQCCCqdWCjo5MeO9Qh6de+WPXzPFgg6lXCdg9jCbSU+jtURiwSd+lSn9+dBk1QgKESnxFKCLkrVjV4jG1+DQnRLLJzivf7YMcRGEQsF9ftjxxCbRCwWdMlU3WiI7SEi6KaIzt5b79VeOycWCTr+e1Nc/tT1QdK6febTA+vu00k+7bV7YqGg5vCo7/z9oGv3mU8PLIK6IRYJqj8zN1ji5+IRtICIoG6IhYLqt9Uv80s0JRvdKkFZg7ohFguqDF3mx+bKNrpNa1CIbohTgnr7mSSIjSTOGEGXS9WNXjozh25BbYRYSGyFoLMXv3LaCLGYOCWoeadIw6b4DQnKm+MqIDKCrhzeXlwFsRWCbmYNiqBVEAsE7QdBb9S1X7PcEEE3QkTQKojTgva3Ty4Pg337TbZNE3RSKdag0olTgl4e7kc/GD8s/R3LVTd65UwNegLbCDFHnBLUfLudFbQxR/FJENQ7IoI6DkS3xHYJ6nYNWhiIboktExSib8QCQXmzCEQ5xClBV0nVjYbYHiKCQhRNRFCIookIClE0EUEhiiYiKETRRASFKJqIoBBFExEUomgigkIUTURQiKKJCApRNBFBIYomIihE0UQEhSiaiKAQRRMRFKJoIoJCFE1EUIiiiQgKUTQRQSGKJiIoRNFEJ4ISsukwgkIUSURQv4hOfn3Jp71GUK+Ibn6/zqe9RlCviAiKoKKJCIqgsomsQREUoiQigkIUTURQiKKJCApRNBFBIYomIihE0UQErYtY+oSR2L3O7AGCNo5Y/pS71L3O7gGCNo6IoPODoDUTEXR+ELRuImvQuUFQiF4QEVQCce5oKqSNNRERVABx/npURhvrIiKoACKCziYiqAAigs4mIqgEImvQmUQEhSiaiKAQRRMRFKJoIoJCFE1E0BqJ5V7tbNpeL0dE0PqIJd8v0rC9XpKIoPUREbQEEUHrIyJoCSKC1khkDbqYiKAQRRMRFKJoIoJCFE1EUIiiiQgKUTQRQSGKJiIoRNFEBIUomoigEEUTERSiaGKzBF36JwZ86qp2Ehsl6PI/0uJTV7WTiKCOA9EtEUEdB6JbYqMEZQ3aPGKzBIXYOGIJQc9v7OwchOHF7Z3ds8kCQSFulrhY0Is798PzN+9f3TsIT18N84VwQRfP+PW3EeJ84mJBn2oP3z+4ePs4PH/rOF/IFrTEMVPtbYS4gFhiirej6PnNs+lC3fScytxt64sRtO5GEDeZ25FX926FT3eNkvkiur3qZ1XJMII2gFhG0Ivbt9Sh0owRVLCgrEEbQCwh6PmNA22pf2tQiA0gLhbU+mmmeXP4ni0QFOKGiYsFPd3ROeA86LrEpV/mWkhcNT4RS0zxi1N1o70kLv9GgUXEleMTEUGrItYp6MQ9+/Q4ImhVxBoFnbxraY9j0QODoJUT61uDChe08KmLoC0iIqj7RkN0SZS9BkVQiLKJrEEhektEUIiiiQgKUTQRQSGKJiIoRNHEBgm6yolwn7qqncTmCLrSS4k+dVU7iQjqOBDdEhHUcSC6JTZHUNagjSQ2SFCITSQiKETRRASFKJqIoBBFExEUomgigkIUTURQiKKJCApRNHHDgq76Scb5jYbYHuJmBV35s+DzGw2xPUQEhSiaiKAQRRM3KyhrUIhrEjcs6GYaDbE9RASFKJqIoBBFExEUomgigkIUTUTQNTLvS6/cpd1EBF09c7820F3aTUTQ1YOgFRARdPUgaAVEBF0jrEE3T0RQiKKJCApRNBFBIYomIihE0UQEhSia6ERQQjYdRlCIIokIClE0EUEhiiYiKETRRASFKJqIoBBFExEUomgigkIUTURQiKKJCApRNBFBIYomIihE0UQEhSiaiKAQRRNbK6j9wJvsNkJsr6DRR4ZFtxHiIwR1R4wC0S0RQR0HoltiWwVlDeoJsbWCQvSDiKAQRRMRFKJoIoJCFE1EUIiiiQgKUTQRQSGKJiIoRNFEBIUomoigEEUTERSiaCKCQhRNRFCIookIClE0EUEhiiY6EbSqPFd3A0qENrrJZBsR1FFoo5sg6IZCG90EQTcU2ugmXgpK2hsEJaKDoER0EJSIDoIS0REt6MXtnd2z6PL5W8e1tmVW0jae39jZOai5NcVJ2/h0Z+cV6Y9jGF7dSx9HyYLqdp6+ai8/FfrApm28uHM/PH/zft0NKkjaRv0sjx9RWcn2dXi644egF28fxwPn+y//k8wRNG3jU/3wvi9xCM08jqHUqSjbxvMf/8QPQc9vnplxyf4h8nHNtzFzSVLybZQ5gmbaePWrX3syxT/dlS9oro1X927V25riZNt4fuNlic+hbBtPb/myBvVtBL24LdJPz0Z5dckXQXNrJ6GCZtp4fkPiAjScXINKXyef7ugkT3XJguoZM1kxCRU0baNYPzNtzC1IRCXX176MoNG5MaumUEHTNtpnvkhJ08dRNVLmGjTX194ISgiCEtFBUCI6CEpEB0GJ6CAoEZ0mC9rfPlH/DoKO+vfysDN6/m7u5uG1I3thEATB1t2pzfNJal8e7l8emt8DW7hNnG8flKs3sMhR19zXeM+0f1FttZ9BoGoOTZuC/TBPSNs63tuPdmT83bItrz9NFtQ4dXn4uu7n8V6v8GaVgS6HtmcXwEz1jmL2kg1LZPKZMSuRQUqvyNO5gsa1w34vfi4mZYaQtjUVNBzOV19SmizoqKt6ZPzdd/V4MZwe7iLl1Iioi/6CPosF1aNP1OmJIovaUVLQuN6o+7rmD16f26Skti6jP+K9zBDStmYEjfbZhzRZUNM3w+2PdDHYPlGdOHr+510zC473gq13YkHjsXX0/Dtmsgz1tGhHX1tmamtQVtCoyuj636lC/2HXE/ZKe28j9U8v1P+qwrB+fv0oYYdR/Y6p0THt6P7oe+pO/uYddVfRZgMzRfeKamdGQ7WOifYkJRQK6tEQ2mRBjUxqAlSTsi60oHrWNLNdT3VZ5MfQiBPalZvuY9PPA923tszWNv0ddXrfVjfydzvWDyttfKW9Nz28GTsy9xzXsUx7n+kI+sZPld5/9oG+a7tZ2O/o/4pqDzrDWPVkmsgQ0rZmBS07qNefRgs61CLsq+HNdI4RdN90jumkdAmpj5I60ZIgvlVtkSuj2qaXowMPvZiLqsSbxnebu1Jf/39axcw9x3WS+kMrso7abrAfDntqmIs306Px9aOwqHZfN92OiJHCOULaVjV2xxdLr07qT6MFVetFJadx5fpRrIouzdA1up45xtEHvOZWVXlgO7KXlJnakaDxqiCuYjZNjrqyV8b3ao6yt5J7juvo+saupJ7Ra6gGzH1z/TA6XTCIj+Ima/ftMeB+1roMIW1r9umQXis9jRZUTex6eo+KuYImt2pBowVarpwhaFQlL2j2yog73tu6m73nQWYRWCDo+Ht/+IujoZ7i7WbRQFlU2+yhaVZyoiFLQFDJGXT6vaTICBpPk7pO1NHJAuD6UbyUS8pM7QlBk8PmzKH01JW6tKPhVnLP2bMK5nJ+ig9/805HbxNvpm7+12h8nKxtFwv6TEUqfYZQLChTvIyM/sT0oi0ygo73OulBUl/3uDnsSA6S9Hnvrbtxma/dywoaVzHg+PAld6W5t32jlT47mR4k2ToWMnmQtK9m9J4RNNlsPz0tlq99GZ2kyCxBs4RiQTlIkpHoxRhjQ1bQ3Ikju2bsRaeZ4tNE1lpbZmsP09NMYVrVdnj2NFN8pf5HT899ddW7SpGYFbPDdLusoPGoG23WN/faKapt/rYnx5JWZQjFgmZXGLLTbEGXS6lhxcXLhLWfheREvZcpN+8NOovrzI6es5Pz6bWl9mdI+SBomnKCrjn6ROdcaw1vFiHEURCUiA6CEtFBUCI6CEpEB0GJ6CAoEZ3/By4KDW2F3COKAAAAAElFTkSuQmCC" /><!-- --></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co">#count vs temp scatter plot</span></a>
+<a class="sourceLine" id="cb11-2" title="2">temp &lt;-<span class="st"> </span><span class="kw">ggplot</span>(bikeTrain, <span class="kw">aes</span>(<span class="dt">x =</span> atemp, <span class="dt">y =</span> cnt))</a>
+<a class="sourceLine" id="cb11-3" title="3">temp <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Count vs Temperature&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Normalized Temperature in Celsius (Percentage of Max of 50)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Bike Rentals&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="dt">x =</span> <span class="fl">.3</span>, <span class="dt">y =</span> <span class="dv">7500</span>, <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;Correlation = &quot;</span>, <span class="kw">round</span>(<span class="kw">cor</span>(bikeTrain<span class="op">$</span>atemp, bikeTrain<span class="op">$</span>cnt), <span class="dv">2</span>)), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAMAAABNUi8GAAABd1BMVEUAAAAAADoAAGYAOjoAOmYAOpAAZrYzMzM6AAA6ADo6AGY6OgA6Ojo6OmY6OpA6ZmY6ZpA6ZrY6kLY6kNtNTU1NTW5NTY5NbqtNjshmAABmADpmAGZmOgBmOmZmOpBmZmZmkJBmkNtmtrZmtttmtv9uTU1uTW5uTY5ubo5ubqtuq+SOTU2OTW6OTY6Obk2ObquOyP+QOgCQOjqQOmaQZgCQZjqQZmaQkDqQkGaQkLaQkNuQtpCQttuQ27aQ2/+rbk2rbm6rbo6rjk2r5OSr5P+2ZgC2Zjq2kDq2kGa2tpC2ttu225C229u22/+2/7a2///Ijk3I///bkDrbkGbbkJDbtmbbtpDb25Db27bb29vb2//b/7bb/9vb///kq27k///rAwDrBAPr6wPr6wTr6+v8AAD8AwD8BAP8BOv86wP86+v/AAD/AAP/AwP/AwT/A+v/BOv/tmb/yI7/25D/27b/29v/5Kv//wP//7b//8j//9v//+T///9mGKhHAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAcI0lEQVR4nO2dj3/bxnmHKSem6XRrk5GJrMxruoaOa9lupXbdsqWVslZc1m2eLG7p1mWS7ER2NtuzQ9PjKAl//O4Ovw4kSAJ48R5egN/3E4cUcV88B/DR4QD+UMtDoQRXq+oOoFDLCoKiRBcERYkuCIoSXRAUJbogKEp0QVCU6IKgKNFFFfTi77/Xar318eqG4z87XLp8utUK6sryhlQQqlZFFHTc8aV6b2XL4QrvShN0FQhVq6IJqqx67z88799utvqrmmbx5mL36jGpP1lBqNoUTdBhq2tuxx1t1pubrdbbD0LPLnbb+t7vvtfa+HN1Rw2NfltfoOmWWvrLVmvDnh3EgupV/fEDveLulx2VH3Va7x6rUFfdeXvPbqEww9aVB96XaqoRgewe+IvD5qiaFUnQi91wtPqD+jcyh/uNvYSg/lG7bwk67ujRdhQ81rLH3kjQcbiqcecH6u7GZ/rnthJU/6Qfj1tc7L7VaV09HiZAdg/M4qg5qmZFElQPg1EpNT7WY+rV44Sg7WP1WNs68vpLB1cOx533jpVoiVX4gl7s6oH192qREutj70vtth6k1YyifXzxRatttVCIrvlVMeNtAEr0oGuvEFWzKk/QQLXBxp6th9bSNIunhkM1kOmHxp23fvRPifWFgqoDu2moJW7rvHpYLzN3ArnDFtEo/off/WWnlSKoXhw3p2wuqoIqU1BzsB4lBQ3vWXJoW0b6yD7Qh913rYlhKOgoOJ/f2DNm+ZiBFtTwlOFxiyATXE5IEVTfi5tTNhdVQZU0B/2Xdx9kFlQ/ODA//f5m8qpScUHVwf8Hf/0PX21B0KZVOWfx063gaGwO8d4gPLCnCqoE+3U09P77X1hnSfEhPnxsVlB/dRrWT2T8n6M56GwP4uaomlVZ10G71kmSOnab6z1JQePRa9z5SFs5av2Jmlp+YY1q1knSrzzvzW4w17QEVZHwJCloERqoTsbe3NRwA5rrQdictLko91XSK0naoOgyk39EfftmUtDwMpM539emBJeZrGvz0WWm4JDcnRtB3+oEk4KoRYhohSszoJkexM1RNSvqa/FvftmJXosfBxfq1ZS003r3P5Nz0OlNfcXJL3PdyfMv1L9nvXYUX6jXq9JrnZuD6iv2D+wWQca8SPArfWT3QckexM1RNatavZspcdUAtRYFQVGiC4KiRBcERYmuWgmKWr+CoCjRBUFRoguCokQXBEWJLgiKEl0kQc9yVc7mxUOuMgAxgiAoPQMQIwiC0jMAMYIyCDq51fvgyPPO7/Y2T2dvIChAvKDVgp7fO/BONk8v93e8kxte8gaCAsQMWi3o5M6pd37/SP3nTW7P3EBQgJhBmUdQ4+m9g+SNWnxN1cIsClVSLZmD+tPN15tGyeRN0ELCb1qFGYAYQasFnXxy4L3+4GjRCApBAeIErRY0GCwxBwWoClDmEfRyf9s/fbdvIChAzKDVgnqve733D3AdFKBKQBkEXV0SNqTCDECMIAhKzwDECIKg9AxAjCAISs8AxAiCoPSMU1Cr1XIDcpKBoC4yLkHmu89cgNxkIKiLDARlBEFQegaCMoIgKD2DOSgjCILSMwAxgiAoPQMQIwiC0jMAMYIgKD0DECMIgtIzAFmZnCdxENRBBqA4k/cyGAR1kAEozkBQgRmA4gwEFZgByMo0aw76zfPnz1+lNnr84pm5/frFM3M3nfEojD99/vzF2dmT5Npq8HQCtLJBlYJ+8/zl2dfPv0trFAoa3qYyVPbx82d+q2+ev3r0Qj3yLA1UpHPMIYCyhSoV1Nj37X/p8e/l2WM1mn6r/j17pEdDtUiPimqIffGtues3eJFYk/FS+/30ZfBIYwRNP1LWeYsKhioV9JHvmxoFzVj43Zn5p6x98uqx9lLp9lgf4r99/uz/zGDp+6cM9o/lOv9E33nyP767T5tyiF9wrpEP5K9CyBYVDUkQ1PdMi6n/Gf1eajHV7XdG0KcvzjzT4JvkfCAW1EitH3ryKg1UpHPMIX5Bg3UI2aKioUoFDSaYM4K+8Bc99cfVFEGjETR6RGvpH+ajg32WjV/aOeYQBM0WqlRQ/yTp5eNQRSOoOsyrEx5j5aNA0OAQPzeCRidJvuLRgJp145d2jjnEPweFoGRBlWH67EefJL06CwU9C06S/tuMk1+HJ0mvzuYF9S8z6YmpOYvSl5lepoOKdI435ACEOShZUN6QnL0MUOEQBKVnAGIEQVB6BiBGEASlZwBiBEFQegYgRhAEpWcAYgRBUHoGIEYQBKVnGg7K+g5PCCo102xQ5vfIQ1CpmWaDIChbqNHeOANBULZQo71xB8IclCvUbG/WBARB6RmAGEEQlJ4BiBEEQekZgBhBEJSeAYgRBEHpGYAYQRCUnpENyv2l9kVBEFRqRjQo/58FKQiSLChKbhlBq+5ECYURtHhGNAgjKASVDcIcFIICxAeCoPQMQIwgCErPAMQIgqD0DECMIAhKzzQUJOPPKkNQeqaZoNzXpyCo1EwzQYsEXaht8S1a9psAQekZO5R51BG9F5YIunhgpcwlFu81CErPWKHsx0XRe2HJHBSClheCoAwgCFpeCIJygDAHLS2EOWjBV+Jl/CYEDSAoOSMYVOy9TJK2CILSM4JBbgUtwIKgDjKCQU4FLQKDoA4yaaGVT1UD56AQVGgmJbT6uRK9FyBo7oKgRUMOQZiDysxAUEYQBKVnJM9Baw+CoPQMQIwgCErPAMQIgqD0DECMIAhKzwDECIKg9AxAjCAISs8AxAiCoPQMQIwgCFook7zMKefpbB4IghbJzLxQJOfpbB4IghbJQFBnIAhaJANBnYEgaKEM5qCuQBCUnmk8KNvb6CCo1EzTQRnfiAxBpWaaDoKgTKGGe+MMBEGZQg33xh0Ic1CeUNO9WQsQBKVnAGIEQVB6BiBGEASlZwBiBEFQegYgRhAEpWdYQev+oj8EpWc4QclrkE3YopwhCErPQFBGEASlZyAoIyiDoJf7vfcPPO/8bm/zdPYGgnKDMAddKejDHe/15unl/o53csNL3kBQgJhBqwU9v38U3kxuHyVvIChAzKDVgk7u/EYf4id3Tr3zewfJG7X4mqrFoy8KVU4tEfTWjrZTHeW1ksmboImE37QKMwAxgjIImjZ0xiMoBAWIE7Ra0POfGRcxB601yMGf1q7yLF4NmJf72/7pu30DQWsCyvv3DeRsUQZBz+/2PjjCddBagxot6OqSsCEVZmoAgqCVb0iFmTqAmjwHhaAAVQeCoPQMQIwgCErPAMQIgqD0jAjQwklmmaClM1kIKjXjHJTiyeLT9BK3aPm1AAgqNeMalOYJBHUnaOpOgKBxCIJWKmj6XoCgcSh1D2EOCkHFgHJdda/FFi1pAEHnMzlfdhH0dDYPJE/Q6uegeV+4FvR0Ng8kUNDSQhC0ASAIOp+BoIJAEDQlY/zMIamcp7N5IAi6IJNnGJXzdDYPBEEXZCCoDBAEXZCBoDJAEHRRBnNQESAISs8AxAiCoPQMQIwgCErPAMQIgqD0DECMIAhKzwDECIKg9AxAjCAISs8AxAiCoPQMQIwgCErPAMQIgqD0DECMIAhKzwDECIKg9AxAjCAISs8AxAiCoPSMVJD/fqyabxEEpWeEgoJ3tNZ8iyAoPSMUBEEhqGgQBIWgskGYg1YnaKbPY8jZyw5ATr48rPRMUwXN9ok2OXuZH+Tk6xfLz0BQGocxBEGzhSAoPSMBBEFFCYo56FxhDipKUFEZgBhBEJSeAYgRVIqgKBR3JQSdbvWnW60rh1nDEn7TKswAxAhKFXTQ9oZXDodtCApQ1aA0QdUAerHb9kaZh1AJG1JhBiBG0AJBp1tdCAqQAFCaoBe73dHGnj7QQ1CAKgalCeqNO622N7h6DEEByp3J9wcocB3UQaYRoKRXxUE5/0QKBHWQaQJoxivBgk63WmHhJMk9aPmzC0ExghbIlAha8fTWQFDMQeVlmiBoaXPQskOpgqqzeBziKwFVJ6hUUJqgF7vdi93+dKuPEdQ1qHpBi3/SzukrSd6g640yXwiVsCEVZpokKOGzym4FHeK1+IKhjCcJEDRbKE1Q/SKnsnOIEbRAKOtlFmGXmSx+AUEZvyEiVVA1CfUGrY29jH5CUOs+UdDUitYodA7qb7NDQfNWyX0qK9QUQeNVyjnyJsq1oMH5O+aghUKkOWhqQVAISspwg8QL6nYOOoxei8f7QYWA9PMv7OTaGWjJCJq9JGxIhRlH5y4Fj6JSt8j/vcNJkoMMBC2UMZtUTNA1eS0+7XRGTOdmCoJavumPdK7BCJp6QUhK5+aKNAfN9xa4M+mCrskctF6CUkA530RcHJSvCs9BL3YhaBmg0l9WXx1K3yKhgmYKpQma4wponQXlnoMu14JlL6QhGyho+LGkpp8klZURKmhwV+wcNFsodQTNWxI2pMKMTEHD+6J399oL6mTokDkHbbSgw1arn/3toHIFdTP5EvR0WtVkQQdXv/K/4K7OggYvYK+toPYclBdEyBR+LV5fCq33u5mit7ysraDNADVb0GrnoACVEEoT1BvqQ7z+itDaC8rPKRoCKFsoVVBvpJ/dzH6KFDT/4FmQUzC0xiD7mVn3y0xOMgDlyiSObSRB/7XOc1CHGYByZciCDvwPe0y3an2SVEIm8ySBAMo3EYGgqoZXDvXn4tU0dM2/myn7aVZxUM5TuUYISpyDajm90dUvWtlfSIKghUFrKWiu0Jyg5t3K406Oc3gICkH5QIsEzeNnQwWt0xx0yWpE7+7Cgl7P/L1M1Qpa+huG6vl0LhuI67lFcYNaC1r+Wy5r9XRGGw9B10LQTB/iKgNUNDMTird+vQSN3gYk/zpoqYKaldXp6bS2fo3moGl1ub/jeed3e5unszcVC1rqHLTOgvKC+DIlCXrS2zGSntyYualc0DIztRM02yWAWm1RSoMMgk5+8tMd7/z+kTe5fZS8aZSgtZuDrgUog6CXn/9WjZeTO6fe+b2D5I1aek3VstE3vfRYVWQZal1riRMn2/qA/nrTKJm8CVrk/qVZNntKX1bFhXqABIBWC6oGy8slI6gYQedTcvYyQIVD6YLaHzs+6enaLnUOyiBoSkzOXgaocChV0NmPHesR9HJ/2z99t2+KCrr0/DN1GQRdU1CaoHOf6pR7HTQuCNpMUCZBV5WEDcEctJmg1EN8Ez527DADECMoVdBGfOxY0l4GqHAoXdCcJWFDKswAxAgSL2ir+FdgydnLABUOpQk6/Rtzc/ELASdJ4cm5iz2G1+IFglIFNadHAxHvB3UoaP3ezbQOoDRB9Wfmhjn+XDwEdZRZR1CqoPpt9Xn+Eg3nhribg0JQiaB0QZWhef7YnIQNKSGDOahA0JygtfpMkowMQIygBSNovpKwIRVmeEBVvitWEAiC0jMsoNR3HdZ6i4qF5gQ17xSpwyF+9SfG5OzlAhkIGjSo6wia4TO3cvZygQwEDRpAUHIGc1BGUIqgg1arO+74X7MMQblCAGULzQs6uHp8sdvq+99kK0bQeRsbPgcFKGgwK+jFbj/4g/GjzN+xzL8h2b7lpQRQzZ/O5oHmBDXfbucLKugsHoKuKwiC0jMAMYJqImihvxsnZy8DVDhUF0HX7pUkgIIG84LizSIAyQHNCVqkJGxIhRmAGEEQlJ4BiBEEQekZgBhBEJSeAYgRBEHpGYAYQRCUngGIEQRB6RmAGEEQlJ4BiBEEQekZgBhBEJSeAYgRBEHpGYAYQRCUngGIEQRB6RmAGEEQlJ4BiBEEQekZgBhBEJSeAYgRBEHpGYAYQRCUngGIEQRB6RmAGEEQlJ4BiBEEQekZgBhBEJSeAYgRVIqgKBR3YQQtngGIEQRB6Rln38sjyBtnIAhKzzj7ZjNB3jgDQVB6BoIygiAoPQNBGUEQlJ7BHJQRBEHpGYAYQRCUngGIEQRB6RmAGEEQlJ4BiBEEQekZgBhBEJSeAYgRBEGLZqxrSyWAsl2pkuONMxAELZixr87TQRmv9cvxxhkIghbMQFA3IAhaMANB3YAgaNEM5qBOQBCUngGIEQRB6ZkglO8tI6L3giAQBKVn/FDON92J3guCQBCUnoGgjCAISs9AUEYQBKVnMAdlBEFQegYgRhAEpWcAYgRBUHoGIEYQBKVnAGIECRc0OvGAoGsKki1ofOkGgq4pCILSMwAxgiAoPQMQI0i2oJiDrj1IuKCkkJy9DFDhEASlZwBiBEFQegYgRhAEpWcAYgRBUHoGIEYQBKVnAGIEQVB6BiBGEASlZwBiBEFQegYgRhAEpWcAYgTVRlBHf0ij5k9n80B1EbTIn3qRs5cBKhyCoPQMQIwgCErPAMQIqougmIOuKag2ggrOAMQIyiDo5Favt+N553d7m6ezNxAUIF7QakHP7x14k08OLvd3vJMbXvImi6Bzx2bRe0x059YRtFrQ19rDhzvn94+8ye2j5E0GQefPbkTvMdGdW0dQhkO8P4pO7pzO36hF11QtixpBl64chVpdSx263N/2Xm8aJZM3wfJlvwEYQQGihLIIen53W50qLRhBVwmKOShAlFAGQSe3drSlBeegrjakwgxAjKDVgvp+msO8OX23byAoQMyg1YKe9HTtcF0HzfgKEQRdU1CGQ/zqIvQp62vsEHRNQRUJGlkJQQFa3qASQWMtZQla4B0pxUC198YZqGpBRc1Bi7ynrxCoYGYdQZULWtaGlJGBoPJA1Qia/1gKQdcUVJGg5W9IKRnMQcWBICg9AxAjCILSMwAxgiAoPQMQIwiC0jMAMYIgKD0DECMIgmbJrDi7l/N0Ng8EQTNkVl0flfN0Ng8EQTNkIGh1IAiaIQNBqwNB0CwZzEErA0FQegYgRhAEpWcAYgRBUHoGIEYQBKVnAGIEQVB6BiBGEASlZwBiBEFQegYgRhAEpWcAYgTxC4ovDwOIEGIXFF+/CBAlBEHpGYAYQRCUngGIEcQuKOagAFFC/II62pAKMwAxgiAoPQMQIwiC0jMAMYIgKD0DECMIgtIzADGCmiDoog9kyNnLABUONUDQhR9pk7OXASocgqD0DECMIAhKzwDECGqAoJiDNhnUBEGrzgDECIKg9AxAjCAISs8AxAiCoPQMQIwgCErPAMQIKkVQFIq7MIIWzwDECIKg9AxAjCAISs8AxAiCoPQMQIwgCErPAMQIgqD0DECMIAhKzwDECIKg9AxAjCAISs8AxAiCoPQMQIwgCErPAMQIgqD0DECMIAhKzwDECIKg9AxAjCBmQdM+zyZ6j4nu3DqCeAVN/USw6D0munPrCIKg9AxAjCAISs8AxAjiFRRzUICIIWZB3W1IhRmAGEEQlJ4BiBEEQekZgBhBEJSeAYgRBEHpGYAYQRCUngGIEQRB6RmAGEEQlJ4BiBEEQekZgBhBEJSeAYgRBEHpGYAYQRCUngGIEQRB6RmAGEEQlJ4BiBEEQekZgBhBpQjqoK41jANQzoKgbjkA5SwI6pYDUM6CoG45AOUs6YKi1rwgKEp0QVCU6IKgKNEFQVGiS6qg53d7m6fm3ute74MjBxzPu9zfYeNYoJOeoy263O+9f8DGiUF6g3o9pn0nVFDtyskNfW9y+yi4x8vx9I7mE9QCPWT8NZgFvY5++zhBqthAQgU9v39k1PQrvsfJmfzkp3zqxKDLzxlHNRuk7zkB6R/ucW2UUEEnd06tjeYbQS3O5ee/ZTzExyB1ZGQ7HiZAkzu/4TzEJ54ivmdIqKD6iBFu/eQW3262OCfbnHPQGDT55IBzFLVAt3aMRewgzgFUqqDJEZRv++3x5pRT0OQGMc5DE1vEaY69esaprlBBk3NQvucz5vinottMHGcbZM9Bf8YqqL1FD9n2m1RBL/e3g3mNfSTh5Hi8l5mSG3T5t2znL9YWPWQ9xFsgzvM+oYIGF9nMNaYe51Q/5ji5Dsq/QRZI3WO83mqD+MZpsYKiUKYgKEp0QVCU6IKgKNEFQVGiC4KiRJd8QadbbX0zunK4uu34+p76L3WRn7/YbfnVLtCTNw+WkmceGSrKxl5qi0V9VN3rBz3cWNAiV6eS3TGrHHfMfphuXT3O0Fo1V33RTQfmZvph1m6VVnUQtNX3sgu6aFGcX9Ko6Mrn62JXP61D0/Xs8WFbBbvmXpbNzdGp6Zbfk3En8HSpoGFrbxQ0G149vthtxz+7qzoI+qPvH9dO0IH/TA7jJzRDXA9QgaCRIiV1Kmw37nyk1z/8aKlp0VqH/pHG9EbvQTXEZ8KVV3UQtD/ohrvHHJvH7/xV68o/Xv9MHX66+hjUDw5F3eAQb37QD+v22ks1CG98OitosHBsr2d8/VP/iBYu1KRDf+Vj00xnNcIsCNfvBZOLz/zOeEm/ItCe381+NBOxHjKldbYETXQi2PZkt/umU+HWm+387J1Dz+pXsM90C+PauPPjHyrIzz9VqCA2VGPqdKub1tobdONd5lvqegithaBjtdNH+jnSR0C9/9rBQWqobVJHQ7Pv1G08Bw3b6idd7/3p1oyg4cLEevQMzU4akrVyLxJULwhbBSv11+RjrIEtWldoZadvCRo+5LfseqGgA78jUSf0D760drf9ToUdDLfT7le0z6IR9ONfKL2//6XeLX7MG7T1f2mtp1t/ZFQf+b/m/eKHn8JVC0G9YVfvI7ObRlqjfvCk+v+7vve/+skIhk9/D+pDbLhbze1wRtBwYWI94W1iobVyS9C+Zz1tibD58Z1oQhKtS4+71nAbDsWHiS0NT+MsK+z1zj2oHw87GG6n3a9on0WC9od9b9RVI2EY06Nx0Iv51l2zLcEau9mnHqVVPQRVkzMtqB4U7MOj9b+ROfONBDU6Dv0T9q4ZTGITghbBwsR6wkNZYqG18mTDsFWw0nhNiYHGXtfAP3TajQfxFYVA0G5KMJpCz3Y7+G0zHQy30+5XYp95RtCRGjD75vFRcLkgOpebbR12K1Y+7p6jqoegarK+VNDp1saePYKOzKnqMD4FTRE0WJguqL3QWvmMoNZ8bEbQcKBRv1mJdelpYjwTsR6KQpagdjASdKbb/iHe72AkqNWvFEGnP/zqT/W+DGP6GlI7vXX4BMRzUAg6V/5++bk6yTHahQegxP/88SAaQX0/w5vowBWsMBh0goVJQc2B853DxEJr5UlBR9bFyhlBQ5GGV5Lr8qKjvd040HnGgPkepjxoNjfoYLiddr8S+8zzJzN/92lbZ8KYWvzPwe/TbGt/5PxwLzqLxyF+vvxdMmpZJ0nzguqxoBMKGpxz+Nci1SJ9qT/lJMlfOCNoSLEWhis3cw01D7vYDRaErYKVJkSKr4Na6zJPsd8yXFH4kAkNuragiU6E2z7bbd2puIPhSVLcr/mTJDWjV0d/Lai1XcGv72xrc1VJizwIroPiJGm+gt/ZgXWZaX4OqmZyG78Oh6ZB+FqMbr+xt+Qy08Zecj3mMlN7ZmG4cnMk1FdgfvzhXih59JLPrKAm5S+01hVM+sbB5SW1omgeqGsUX2aa7aFnX2ayu607FXYw3E6rX4l95vmChqNuEBsYajuttV6juewWTZXt6YOTki+oy3I+PiSrjFcSeS9U4kJ9tVWxoOELNwVrZA4apFWsROClzkqrakGJA9Sw4LtgMhfeLIJCJQuCokQXBEWJLgiKEl0QFCW6IChKdEFQlOj6fwXDvn0BnZvHAAAAAElFTkSuQmCC" /><!-- --></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="co">#count vs humidity scatter plot</span></a>
+<a class="sourceLine" id="cb12-2" title="2">humidity &lt;-<span class="st"> </span><span class="kw">ggplot</span>(bikeTrain, <span class="kw">aes</span>(<span class="dt">x =</span> hum, <span class="dt">y =</span> cnt))</a>
+<a class="sourceLine" id="cb12-3" title="3">humidity <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Count vs Humidity&quot;</span>, <span class="dt">x =</span> <span class="st">&quot;Normalized Humidity Values (Percentage of Max of 100)&quot;</span>, <span class="dt">y =</span> <span class="st">&quot;Bike Rentals&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">geom_text</span>(<span class="dt">x =</span> <span class="fl">.4</span>, <span class="dt">y =</span> <span class="dv">7500</span>, <span class="dt">size =</span> <span class="dv">3</span>, <span class="dt">label =</span> <span class="kw">paste0</span>(<span class="st">&quot;Correlation = &quot;</span>, <span class="kw">round</span>(<span class="kw">cor</span>(bikeTrain<span class="op">$</span>hum, bikeTrain<span class="op">$</span>cnt), <span class="dv">2</span>)), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<h1 id="modeling">Modeling</h1>
+<h2 id="regression-tree-model">Regression Tree Model</h2>
+<p>The first model to be fit on this training data is a regression tree model. This fit uses recursive binary splitting and tries to minimize residual sums of squares at each predictor. The response variable the model is trying to predict for is cnt, or the count of bike rentals. The predictors are all 8 other variables narrowed down in the introduction section. Leave one out cross validation is used, which is a type of cross-validation approach in which each observation is considered as the validation set and the rest (N-1 observations) are considered as the training set. This method helps reduce bias and randomness. The tuning parameter of cp for the rpart method is set to replicate at 10 values to see which fit has the lowest RMSE and MAE and the highest R-squared value. After the everything has run, the optimal model will be chosen and saved in the object to later be used on the test set. Details about the final model are shown below.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="co">#Using caret package to fit training data to regression tree using LOOCV</span></a>
+<a class="sourceLine" id="cb13-2" title="2">bikeReg &lt;-<span class="st"> </span><span class="kw">train</span>(cnt <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> bikeTrain, <span class="dt">method =</span> <span class="st">&quot;rpart&quot;</span>,</a>
+<a class="sourceLine" id="cb13-3" title="3">                 <span class="dt">trControl =</span> <span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;LOOCV&quot;</span>),</a>
+<a class="sourceLine" id="cb13-4" title="4">                 <span class="dt">tuneLength =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb13-5" title="5"></a>
+<a class="sourceLine" id="cb13-6" title="6"><span class="co">#Display fit details</span></a>
+<a class="sourceLine" id="cb13-7" title="7">bikeReg</a></code></pre></div>
+<pre><code>## CART 
+## 
+## 72 samples
+##  8 predictor
+## 
+## No pre-processing
+## Resampling: Leave-One-Out Cross-Validation 
+## Summary of sample sizes: 71, 71, 71, 71, 71, 71, ... 
+## Resampling results across tuning parameters:
+## 
+##   cp          RMSE      Rsquared    MAE     
+##   0.00000000  1486.060  0.26264053  1233.729
+##   0.04151737  1502.194  0.24891786  1280.588
+##   0.08303474  1469.315  0.27062985  1277.188
+##   0.12455211  1380.611  0.33744696  1197.649
+##   0.16606948  1380.611  0.33744696  1197.649
+##   0.20758685  1380.611  0.33744696  1197.649
+##   0.24910423  1380.611  0.33744696  1197.649
+##   0.29062160  1380.611  0.33744696  1197.649
+##   0.33213897  1380.611  0.33744696  1197.649
+##   0.37365634  1911.216  0.01174529  1694.273
+## 
+## RMSE was used to select the optimal model using the smallest value.
+## The final value used for the model was cp = 0.332139.
+</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co">#Best tuning parameter value for the final model</span></a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="kw">kable</span>(bikeReg<span class="op">$</span>bestTune)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">cp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">9</td>
+<td align="right">0.332139</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="co">#Displaying the final model</span></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="kw">fancyRpartPlot</span>(bikeReg<span class="op">$</span>finalModel, <span class="dt">main =</span> <span class="st">&quot;Regression Tree Model for cnt Variable on Training Data&quot;</span>, <span class="dt">sub =</span> <span class="ot">NULL</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<h2 id="boosted-tree-model">Boosted Tree Model</h2>
+<p>The second model to be fit on this training data is a boosted tree model. This fit is basically a slow training of trees, as predictions are updated as the tree grows. The response variable the model is trying to predict for is cnt, or the count of bike rentals. The predictors are all 8 other variables narrowed down in the introduction section. Repeated cross validation is used, with the parameters of number = 10 and repeats = 5. Thus, 10 different folds of cross validation is repeated 5 times. Also tuning parameters set for the gbm model are interaction.depth, n.trees, shrinkage, and n.minobsinnode. These all have various lengths to check except for shrinkage. After this has all been run, a final model with the lowest RMSE and MAE and highest R Squared will be selected for use on the test set. Details about the final model are shown below.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="co">#Using caret package to fit training data to boosted tree model using repeated cv</span></a>
+<a class="sourceLine" id="cb17-2" title="2">bikeBoost &lt;-<span class="st"> </span><span class="kw">train</span>(cnt <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> bikeTrain, <span class="dt">method =</span> <span class="st">&quot;gbm&quot;</span>,</a>
+<a class="sourceLine" id="cb17-3" title="3">                   <span class="dt">trControl =</span> <span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;repeatedcv&quot;</span>, <span class="dt">number =</span> <span class="dv">10</span>, <span class="dt">repeats =</span> <span class="dv">5</span>),</a>
+<a class="sourceLine" id="cb17-4" title="4">                   <span class="dt">verbose =</span> <span class="ot">FALSE</span>, <span class="dt">tuneGrid =</span> <span class="kw">expand.grid</span>(<span class="dt">interaction.depth =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>), </a>
+<a class="sourceLine" id="cb17-5" title="5">                                                           <span class="dt">n.trees =</span> <span class="kw">c</span>(<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>, <span class="dv">100</span>, <span class="dv">125</span>, <span class="dv">150</span>),</a>
+<a class="sourceLine" id="cb17-6" title="6">                                                           <span class="dt">shrinkage =</span> <span class="fl">0.1</span>, <span class="dt">n.minobsinnode =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>)))</a>
+<a class="sourceLine" id="cb17-7" title="7"></a>
+<a class="sourceLine" id="cb17-8" title="8"><span class="co">#Best tuning parameter values for the final model</span></a>
+<a class="sourceLine" id="cb17-9" title="9"><span class="kw">kable</span>(bikeBoost<span class="op">$</span>bestTune)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">n.trees</th>
+<th align="right">interaction.depth</th>
+<th align="right">shrinkage</th>
+<th align="right">n.minobsinnode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">3</td>
+<td align="right">75</td>
+<td align="right">1</td>
+<td align="right">0.1</td>
+<td align="right">5</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="co">#Details about final model</span></a>
+<a class="sourceLine" id="cb18-2" title="2">bikeBoost<span class="op">$</span>finalModel</a></code></pre></div>
+<pre><code>## A gradient boosted model with gaussian loss function.
+## 75 iterations were performed.
+## There were 13 predictors of which 5 had non-zero influence.
+</code></pre>
+<h2 id="linear-regression-model">Linear Regression Model</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">m3&lt;-<span class="kw">lm</span>(cnt<span class="op">~</span><span class="st"> </span>season<span class="op">+</span>weathersit<span class="op">+</span>hum<span class="op">+</span>windspeed, <span class="dt">data=</span>bikeTrain)</a></code></pre></div>
+<h1 id="test-set-predictions">Test Set Predictions</h1>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="co">#Setting up test set predictions</span></a>
+<a class="sourceLine" id="cb21-2" title="2">testBikeRT &lt;-<span class="st"> </span><span class="kw">predict</span>(bikeReg, <span class="dt">newdata =</span> bikeTest)</a>
+<a class="sourceLine" id="cb21-3" title="3">testBikeBoost &lt;-<span class="st"> </span><span class="kw">predict</span>(bikeBoost, <span class="dt">newdata =</span> bikeTest)</a>
+<a class="sourceLine" id="cb21-4" title="4">lm_pred&lt;-<span class="kw">predict</span>(m3, <span class="dt">newdata =</span> bikeTest)</a>
+<a class="sourceLine" id="cb21-5" title="5"></a>
+<a class="sourceLine" id="cb21-6" title="6"><span class="co">#Comparing fit results from the two models on the test sets</span></a>
+<a class="sourceLine" id="cb21-7" title="7"><span class="kw">postResample</span>(testBikeRT, bikeTest<span class="op">$</span>cnt)</a></code></pre></div>
+<pre><code>##         RMSE     Rsquared          MAE 
+## 1678.6811892    0.3695774 1509.6156815
+</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">postResample</span>(testBikeBoost, bikeTest<span class="op">$</span>cnt)</a></code></pre></div>
+<pre><code>##         RMSE     Rsquared          MAE 
+## 1452.2497514    0.5285565 1312.9451285
+</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">postResample</span>(lm_pred,bikeTest<span class="op">$</span>cnt)</a></code></pre></div>
+<pre><code>##        RMSE    Rsquared         MAE 
+## 1732.855846    0.297794 1443.394709
+</code></pre>
+<p>The RMSE, MAE and R-squared values are shown above for each model being fit on the bike test set. The first set of results are from the Regression Tree model, and the second set of results are form the Boosted Tree model. The model that has results showing the lower RMSE and MAE and higher R-squared values are a better fit on this data when predicting for the cnt response variable.</p>
+
+</body>
+</html>
